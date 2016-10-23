@@ -1,0 +1,8 @@
+/*
+ * @file base.scss
+ * Only imports of base styles. Text, font-face, images or wells (from bootstrap)
+ *
+ */
+@import "text";
+@import "wells";
+@import "img";

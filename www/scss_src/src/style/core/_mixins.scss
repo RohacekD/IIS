@@ -1,0 +1,99 @@
+@import "variables";
+@import "triangle";
+@import "functions";
+@import "aspect-ration";
+@import "linx";
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin linear-gradient($angle, $start, $stop, $from: 0%, $to: 100%) {
+  background: $start;
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #00a993), color-stop(100%, #003732));
+  background: -moz-linear-gradient($angle, $start $from, $stop $to);
+  //background: -moz-gradient($angle, $start $from, $stop $to);
+  background: -webkit-linear-gradient($angle, $stop $from, $start $to);
+  background: -o-linear-gradient($angle, $start $from, $stop $to);
+  background: -ms-linear-gradient($angle, $start $from, $stop $to);
+  background: linear-gradient($angle, $start $from, $stop $to);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$start}', endColorstr='#{$stop}', GradientType=1);
+}
+
+@mixin background-image($image) {
+  background-image: url(#{$escToRoot}#{$image});
+}
+
+@mixin box-shadow($h-shadow, $v-shadow, $blur, $spread, $color: black) {
+  box-shadow: $h-shadow $v-shadow $blur $spread $color;
+  -webkit-box-shadow: $h-shadow $v-shadow $blur $spread $color;
+  -mox-box-shadow: $h-shadow $v-shadow $blur $spread $color;
+}
+
+@mixin opacity($x) {
+  opacity: #{$x};
+  filter: alpha(opacity=$x); /* For IE8 and earlier */
+}
+
+@mixin hide-text(){
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin vertical-center(){
+  position: absolute;
+  bottom: 50%;
+  -webkit-transform: translate(0px, 50%);
+  -moz-transform: translate(0px, 50%);
+  -ms-transform: translate(0px, 50%);
+  -o-transform: translate(0px, 50%);
+  transform: translate(0px, 50%);
+}
+@mixin horizontal-center(){
+  position: absolute;
+  right: 50%;
+  -webkit-transform: translate(50%, 0px);
+  -moz-transform: translate(50%, 0px);
+  -ms-transform: translate(50%, 0px);
+  -o-transform: translate(50%, 0px);
+  transform: translate(50%, 0px);
+}
+
+@mixin floatint-boxes($num, $space, $wspace){
+  $whole-space-between: $space*($num - 1);
+  float: left;
+  width: calc((100% - #{$whole-space-between}px) / #{$num});
+  margin: #{$wspace/2}px #{$space/2}px;
+  &:nth-of-type(#{$num}n + #{$num}){
+    margin-right: 0px;
+  }
+  &:nth-of-type(#{$num}n + 1){
+    margin-left: 0px;
+  }
+}
+
+@mixin user-select($opt: none){
+  -webkit-touch-callout: $opt;
+  -webkit-user-select: $opt;
+  -khtml-user-select: $opt;
+  -moz-user-select: $opt;
+  -ms-user-select: $opt;
+  user-select: $opt;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+/*
+@mixin image-url($name) {
+  @return url(#{$escToRoot}#{$imageFolder});
+}*/

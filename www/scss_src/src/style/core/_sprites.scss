@@ -1,0 +1,114 @@
+/*
+SCSS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon-home: x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet: width height image $spritesheet-sprites;
+*/
+$left-menu-anonyme-name: 'left-menu-anonyme';
+$left-menu-anonyme-x: 0px;
+$left-menu-anonyme-y: 0px;
+$left-menu-anonyme-offset-x: 0px;
+$left-menu-anonyme-offset-y: 0px;
+$left-menu-anonyme-width: 15px;
+$left-menu-anonyme-height: 15px;
+$left-menu-anonyme-total-width: 42px;
+$left-menu-anonyme-total-height: 28px;
+$left-menu-anonyme-image: '../../../sprites/spritesheet.png';
+$left-menu-anonyme: (0px, 0px, 0px, 0px, 15px, 15px, 42px, 28px, '../../../sprites/spritesheet.png', 'left-menu-anonyme', );
+$left-menu-chat-name: 'left-menu-chat';
+$left-menu-chat-x: 0px;
+$left-menu-chat-y: 15px;
+$left-menu-chat-offset-x: 0px;
+$left-menu-chat-offset-y: -15px;
+$left-menu-chat-width: 16px;
+$left-menu-chat-height: 13px;
+$left-menu-chat-total-width: 42px;
+$left-menu-chat-total-height: 28px;
+$left-menu-chat-image: '../../../sprites/spritesheet.png';
+$left-menu-chat: (0px, 15px, 0px, -15px, 16px, 13px, 42px, 28px, '../../../sprites/spritesheet.png', 'left-menu-chat', );
+$left-menu-support-name: 'left-menu-support';
+$left-menu-support-x: 15px;
+$left-menu-support-y: 0px;
+$left-menu-support-offset-x: -15px;
+$left-menu-support-offset-y: 0px;
+$left-menu-support-width: 15px;
+$left-menu-support-height: 15px;
+$left-menu-support-total-width: 42px;
+$left-menu-support-total-height: 28px;
+$left-menu-support-image: '../../../sprites/spritesheet.png';
+$left-menu-support: (15px, 0px, -15px, 0px, 15px, 15px, 42px, 28px, '../../../sprites/spritesheet.png', 'left-menu-support', );
+$lock-password-name: 'lock-password';
+$lock-password-x: 30px;
+$lock-password-y: 0px;
+$lock-password-offset-x: -30px;
+$lock-password-offset-y: 0px;
+$lock-password-width: 12px;
+$lock-password-height: 15px;
+$lock-password-total-width: 42px;
+$lock-password-total-height: 28px;
+$lock-password-image: '../../../sprites/spritesheet.png';
+$lock-password: (30px, 0px, -30px, 0px, 12px, 15px, 42px, 28px, '../../../sprites/spritesheet.png', 'lock-password', );
+$spritesheet-width: 42px;
+$spritesheet-height: 28px;
+$spritesheet-image: '../../../sprites/spritesheet.png';
+$spritesheet-sprites: ($left-menu-anonyme, $left-menu-chat, $left-menu-support, $lock-password, );
+$spritesheet: (42px, 28px, '../../../sprites/spritesheet.png', $spritesheet-sprites, );
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  @include sprite-width($icon-home);
+}
+
+.icon-email {
+  @include sprite($icon-email);
+}
+*/
+@mixin sprite-width($sprite) {
+  width: nth($sprite, 5);
+}
+
+@mixin sprite-height($sprite) {
+  height: nth($sprite, 6);
+}
+
+@mixin sprite-position($sprite) {
+  $sprite-offset-x: nth($sprite, 3);
+  $sprite-offset-y: nth($sprite, 4);
+  background-position: $sprite-offset-x  $sprite-offset-y;
+}
+
+@mixin sprite-image($sprite) {
+  $sprite-image: nth($sprite, 9);
+  background-image: url(#{$sprite-image});
+}
+
+@mixin sprite($sprite) {
+  @include sprite-image($sprite);
+  @include sprite-position($sprite);
+  @include sprite-width($sprite);
+  @include sprite-height($sprite);
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of SCSS
+
+@include sprites($spritesheet-sprites);
+*/
+@mixin sprites($sprites) {
+  @each $sprite in $sprites {
+    $sprite-name: nth($sprite, 10);
+    .#{$sprite-name} {
+      @include sprite($sprite);
+    }
+  }
+}

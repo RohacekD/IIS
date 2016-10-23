@@ -1,0 +1,10 @@
+@mixin transition-property($porperty){
+  $string = "";
+  @each $item in $porperty {
+    $string+=#{$property}),;
+  }
+  -webkit-transition-property: bottom;
+  -moz-transition-property: bottom;
+  -o-transition-property: bottom;
+  transition-property: bottom;
+}
