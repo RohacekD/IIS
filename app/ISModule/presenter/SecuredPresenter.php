@@ -8,9 +8,8 @@
 
 namespace App\ISModule\Presenters;
 
-use App\Presenters\BasePresenter;
-use Nette,
-    App\Model;
+use App\ISModule\Presenters\BasePresenter;
+use Nette;
 
 
 class SecuredPresenter extends BasePresenter {
@@ -33,15 +32,13 @@ class SecuredPresenter extends BasePresenter {
     {
         parent::beforeRender();
 
-        $this->template->menuItems = $this->createMenu();
+       // $this->template->menuItems = $this->createMenu();
 
-        if(!$this->getUser()->isAllowed("warehouse", "enter") && !$this->getUser()->isLoggedIn()){
-            if($this->name!="Admin:Sign" || $this->action!="in")//prevent redirect loop
-                $this->redirect("Sign:in");
-        }
-        else if(!$this->getUser()->isAllowed("warehouse", "enter") && $this->getUser()->isLoggedIn()){
+		if($this->name!="Admin:Sign" || $this->action!="in")//prevent redirect loop
+			$this->redirect("Sign:in");
+        /*else if(!$this->getUser()->isAllowed("warehouse", "enter") && $this->getUser()->isLoggedIn()){
             throw new Nette\Application\ForbiddenRequestException;
-        }
+        }*/
         $this->template->user = $this->getUser();
     }
 

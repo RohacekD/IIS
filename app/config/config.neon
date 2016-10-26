@@ -19,8 +19,7 @@ session:
 
 
 services:
-	- App\Model\UserManager
+	- App\ISModule\Model\UserManager
 	- App\Forms\FormFactory
-	- App\Forms\SignInFormFactory
-	- App\Forms\SignUpFormFactory
+	- App\ISModule\Forms\SignInFormFactory
 	router: App\RouterFactory::createRouter

@@ -5,6 +5,7 @@ namespace App\ISModule\Forms;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Security\User;
+use App\Forms\FormFactory;
 
 
 class SignInFormFactory
@@ -18,6 +19,10 @@ class SignInFormFactory
 	private $user;
 
 
+	/**
+	 * @param FormFactory $factory
+	 * @param User $user
+	 */
 	public function __construct(FormFactory $factory, User $user)
 	{
 		$this->factory = $factory;
@@ -26,6 +31,7 @@ class SignInFormFactory
 
 
 	/**
+	 * @param callable $onSuccess
 	 * @return Form
 	 */
 	public function create(callable $onSuccess)

@@ -3,16 +3,13 @@
 namespace App\Presenters;
 
 use Nette;
-use App\Forms;
+use App\ISModule\Forms;
 
 
 class SignPresenter extends BasePresenter
 {
 	/** @var Forms\SignInFormFactory @inject */
 	public $signInFactory;
-
-	/** @var Forms\SignUpFormFactory @inject */
-	public $signUpFactory;
 
 
 	/**

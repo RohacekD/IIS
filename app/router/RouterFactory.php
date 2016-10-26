@@ -17,40 +17,14 @@ class RouterFactory extends Nette\Object
 	/**
 	 * @return \Nette\Application\IRouter
 	 */
-	public function createRouter()
+	public static function createRouter()
 	{
 		//TODO: create sitemap and robots?
 		$router = new RouteList();
 		$router[] = new Route('robots.txt', 'Robots:default');
 		$router[] = new Route('sitemap.xml', 'Sitemap:default');
 		$router[] = new Route('index<? \.html?|\.php|>', 'Homepage:default', Route::ONE_WAY);
-		$router[] = new Route('produkty/<action=default>[/<category>[/<company>]][/strana-<page>]', array(
-			'presenter' => 'Products',
-			'action' => array(
-				Route::FILTER_TABLE => array(
-					'firmy'     => 'firms',
-					'opravy-sperku' => 'repair',
-				)
-			),
-			'category' => array(
-				Route::FILTER_IN => array($this->urlFilter, 'decodeCategory'),
-				Route::FILTER_OUT => array($this->urlFilter, 'codeCategory'),
-			),
-			'company' => array(
-				Route::FILTER_IN => array($this->urlFilter, 'decodeCompany'),
-				Route::FILTER_OUT => array($this->urlFilter, 'codeCompany'),
-			),
-			'page' => 1,
-		));
-		$router[] = new Route('<presenter=Product>/detail/<id>', array(
-			'presenter' => array(
-				Route::FILTER_TABLE => array(
-					'novinky'     => 'News',
-				),
-			),
-			'action' => 'detail',
-		));
-		$router[] = $this->createIS();
+		$router[] = self::createIS();
 		$router[] = new Route('<presenter=Homepage>/<action=default>[/strana-<page>]',
 			array(
 				'presenter' => array(
@@ -70,9 +44,9 @@ class RouterFactory extends Nette\Object
 		return $router;
 	}
 
-	public function createIS()
+	public static function createIS()
 	{
-		$admin = new RouteList('Admin');
+		$admin = new RouteList('IS');
 		$admin[] = new Route('admin/index<? \.html?|\.php|>', 'Homepage:default', Route::ONE_WAY);
 		$admin[] = new Route('admin/novinky/detail/<id>/',array(
 			'presenter' => 'news',
