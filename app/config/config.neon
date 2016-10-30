@@ -23,3 +23,9 @@ services:
 	- App\Forms\FormFactory
 	- App\ISModule\Forms\SignInFormFactory
 	router: App\RouterFactory::createRouter
+
+database:
+    default:
+        dsn: " sql7.freesqldatabase.com"
+        user: sql7142336
+        password: TMyFXqt9yb
