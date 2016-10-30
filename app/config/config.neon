@@ -25,7 +25,8 @@ services:
 	router: App\RouterFactory::createRouter
 
 database:
-    default:
-        dsn: " sql7.freesqldatabase.com"
-        user: sql7142336
-        password: TMyFXqt9yb
+	dsn: "sql7.freesqldatabase.com"
+	user: sql7142336
+	password: TMyFXqt9yb
+	options:
+		lazy: yes
