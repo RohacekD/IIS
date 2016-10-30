@@ -9,25 +9,27 @@
 namespace App\Acl;
 
 use Nette,
-    Nette\Security\Permission;
+	Nette\Security\Permission;
 
-class AclFactory{
-    /**
+class AclFactory
+{
+	/**
 	 * This class referencing UC-Diagram
-     * @return Permission
-     */
-    public function createAcl(){
-        $acl = new Permission;
+	 * @return Permission
+	 */
+	public function createAcl()
+	{
+		$acl = new Permission;
 		//create roles
-        $acl->addRole('guest');
-        $acl->addRole('actor', 'guest');
+		$acl->addRole('guest');
+		$acl->addRole('actor', 'guest');
 
 		$acl->addRole('director', 'guest');
 		$acl->addRole('organizer', 'director');
 		$acl->addRole('admin', 'organizer');
 
 		//create resources
-        $acl->addResource('productions');//inscenace
+		$acl->addResource('productions');//inscenace
 		$acl->addResource('performance');//predstaveni
 		$acl->addResource('role');//role
 		$acl->addResource('prop');//rekvizita
@@ -53,6 +55,6 @@ class AclFactory{
 		//TODO: add every bindings
 
 
-        return $acl;
-    }
+		return $acl;
+	}
 }

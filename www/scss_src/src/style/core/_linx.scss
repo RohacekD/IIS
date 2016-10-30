@@ -1,17 +1,17 @@
 /**
  * Mixin for styling anchors
  **/
-@mixin linx ($link, $visit, $hover, $active) {
+@mixin linx($link, $visit, $hover, $active) {
   a {
-    color: $link;
-    &:visited {
-      color: $visit;
-    }
-    &:hover {
-      color: $hover;
-    }
-    &:active {
-      color: $active;
-    }
+	color: $link;
+	&:visited {
+	  color: $visit;
+	}
+	&:hover {
+	  color: $hover;
+	}
+	&:active {
+	  color: $active;
+	}
   }
 }

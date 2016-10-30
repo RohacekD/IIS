@@ -85,6 +85,6 @@ class UserManager implements Nette\Security\IAuthenticator
 }
 
 
-
 class DuplicateNameException extends \Exception
-{}
+{
+}

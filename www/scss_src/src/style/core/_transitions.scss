@@ -1,7 +1,7 @@
-@mixin transition-property($porperty){
+@mixin transition-property($porperty) {
   $string = "";
   @each $item in $porperty {
-    $string+=#{$property}),;
+	$string + =#{$property}),;
   }
   -webkit-transition-property: bottom;
   -moz-transition-property: bottom;

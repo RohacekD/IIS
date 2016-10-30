@@ -12,34 +12,35 @@ use App\ISModule\Presenters\BasePresenter;
 use Nette;
 
 
-class SecuredPresenter extends BasePresenter {
-    /** @var Nette\Http\Request */
-    protected $http_request;
-    /** @var Nette\Database\Context */
-    protected $database;
+class SecuredPresenter extends BasePresenter
+{
+	/** @var Nette\Http\Request */
+	protected $http_request;
+	/** @var Nette\Database\Context */
+	protected $database;
 
-    public  function injectHttpRequest(Nette\Http\Request $http_request)
-    {
-        $this->http_request = $http_request;
-    }
+	public function injectHttpRequest(Nette\Http\Request $http_request)
+	{
+		$this->http_request = $http_request;
+	}
 
-    public function injectDatabase(Nette\Database\Context $database)
-    {
-        $this->database = $database;
-    }
+	public function injectDatabase(Nette\Database\Context $database)
+	{
+		$this->database = $database;
+	}
 
-    protected function beforeRender()
-    {
-        parent::beforeRender();
+	protected function beforeRender()
+	{
+		parent::beforeRender();
 
-       // $this->template->menuItems = $this->createMenu();
+		// $this->template->menuItems = $this->createMenu();
 
-		if($this->name!="Admin:Sign" || $this->action!="in")//prevent redirect loop
+		if ($this->name != "Admin:Sign" || $this->action != "in")//prevent redirect loop
 			$this->redirect("Sign:in");
-        /*else if(!$this->getUser()->isAllowed("warehouse", "enter") && $this->getUser()->isLoggedIn()){
-            throw new Nette\Application\ForbiddenRequestException;
-        }*/
-        $this->template->user = $this->getUser();
-    }
+		/*else if(!$this->getUser()->isAllowed("warehouse", "enter") && $this->getUser()->isLoggedIn()){
+			throw new Nette\Application\ForbiddenRequestException;
+		}*/
+		$this->template->user = $this->getUser();
+	}
 
 }

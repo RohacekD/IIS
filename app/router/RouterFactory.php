@@ -29,11 +29,11 @@ class RouterFactory extends Nette\Object
 			array(
 				'presenter' => array(
 					Route::FILTER_TABLE => array(
-						'o-nas'     => 'About',
-						'produkty'  => 'Products',
-						'kontakty'  => 'Contacts',
+						'o-nas' => 'About',
+						'produkty' => 'Products',
+						'kontakty' => 'Contacts',
 						'aktuality' => 'News',
-						'prodejny'  => 'Store',
+						'prodejny' => 'Store',
 
 					)
 				),
@@ -48,11 +48,11 @@ class RouterFactory extends Nette\Object
 	{
 		$admin = new RouteList('IS');
 		$admin[] = new Route('admin/index<? \.html?|\.php|>', 'Homepage:default', Route::ONE_WAY);
-		$admin[] = new Route('admin/novinky/detail/<id>/',array(
+		$admin[] = new Route('admin/novinky/detail/<id>/', array(
 			'presenter' => 'news',
 			'action' => 'show',
 		));
-		$admin[] = new Route('admin/<presenter=Homepage>/<action=default>[/strana-<page>][/<id>]',array(
+		$admin[] = new Route('admin/<presenter=Homepage>/<action=default>[/strana-<page>][/<id>]', array(
 			'page' => 1,
 		));
 		return $admin;
