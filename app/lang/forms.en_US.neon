@@ -1,0 +1,9 @@
+login:
+	title: Sign in
+	username: "Username:"
+	usernameHint: "Please enter your username."
+	password: "Password:"
+	passwordHint: "Please enter your password."
+	keepLogIn: Keep me signed in
+	signIn: Sign in
+	error: "The username or password you entered is incorrect."

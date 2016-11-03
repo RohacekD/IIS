@@ -30,3 +30,10 @@ database:
 	password: TMyFXqt9yb
 	options:
 		lazy: yes
+
+extensions:
+    translation: Kdyby\Translation\DI\TranslationExtension
+
+translation:
+    default: cs
+    fallback: [cs_CZ, cs]

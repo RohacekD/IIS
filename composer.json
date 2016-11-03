@@ -35,7 +35,8 @@
 	"nette/utils": "^2.4",
 	"latte/latte": "^2.4",
 	"tracy/tracy": "^2.4",
-	"dg/adminer-custom": "^1.6"
+	"dg/adminer-custom": "^1.6",
+    "kdyby/translation": "@dev"
   },
   "require-dev": {
 	"nette/tester": "dev-feature/teamcity-output"
@@ -45,6 +46,5 @@
 	  "type": "vcs",
 	  "url": "https://github.com/jiripudil/tester"
 	}
-  ],
-  "minimum-stability": "stable"
+  ]
 }

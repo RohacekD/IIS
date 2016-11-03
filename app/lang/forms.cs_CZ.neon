@@ -1,0 +1,9 @@
+login:
+	title: Přihlášení
+	username: "Přihlašovací jméno:"
+	usernameHint: "Prosím zadejte přihlašovací jméno."
+	password: "Heslo:"
+	passwordHint: "Prosím zadejte heslo."
+	keepLogIn: Zůstat přihlášen
+	signIn: Přihlásit
+	error: "Přihlašovací jméno a heslo nesouhlasí."

@@ -23,9 +23,9 @@ class RouterFactory extends Nette\Object
 		$router = new RouteList();
 		$router[] = new Route('robots.txt', 'Robots:default');
 		$router[] = new Route('sitemap.xml', 'Sitemap:default');
-		$router[] = new Route('index<? \.html?|\.php|>', 'Homepage:default', Route::ONE_WAY);
+		$router[] = new Route('[<locale=cs cs|en>/]index<? \.html?|\.php|>', 'Homepage:default', Route::ONE_WAY);
 		$router[] = self::createIS();
-		$router[] = new Route('<presenter=Homepage>/<action=default>[/strana-<page>]',
+		$router[] = new Route('[<locale=cs cs|en>/]<presenter=Homepage>/<action=default>[/strana-<page>]',
 			array(
 				'presenter' => array(
 					Route::FILTER_TABLE => array(
