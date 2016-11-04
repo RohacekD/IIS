@@ -25,7 +25,7 @@ services:
 	router: App\RouterFactory::createRouter
 
 database:
-	dsn: "sql7.freesqldatabase.com"
+	dsn: "mysql:host=sql7.freesqldatabase.com;dbname=sql7142336"
 	user: sql7142336
 	password: TMyFXqt9yb
 	options:
