@@ -29,14 +29,23 @@ class SecuredPresenter extends BasePresenter
 		$this->database = $database;
 	}
 
+	protected function startup()
+	{
+		parent::startup();
+
+		if(!$this->getUser()->isLoggedIn()){
+
+			$this->redirect('Sign:in', array('backlink' => $this->storeRequest()));
+
+		}
+	}
+
 	protected function beforeRender()
 	{
 		parent::beforeRender();
 
 		// $this->template->menuItems = $this->createMenu();
 
-		if ($this->name != "Admin:Sign" || $this->action != "in")//prevent redirect loop
-			$this->redirect("Sign:in");
 		/*else if(!$this->getUser()->isAllowed("warehouse", "enter") && $this->getUser()->isLoggedIn()){
 			throw new Nette\Application\ForbiddenRequestException;
 		}*/
