@@ -7,7 +7,8 @@ use Nette\Security\Passwords;
 
 
 /**
- * Users management.
+ * Class UserManager
+ * @package App\ISModule\Model
  */
 class UserManager implements Nette\Security\IAuthenticator
 {
