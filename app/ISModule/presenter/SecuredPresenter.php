@@ -14,20 +14,10 @@ use Nette;
 
 class SecuredPresenter extends BasePresenter
 {
-	/** @var Nette\Http\Request */
+	/** @var Nette\Http\Request @inject */
 	protected $http_request;
-	/** @var Nette\Database\Context */
+	/** @var Nette\Database\Context @inject */
 	protected $database;
-
-	public function injectHttpRequest(Nette\Http\Request $http_request)
-	{
-		$this->http_request = $http_request;
-	}
-
-	public function injectDatabase(Nette\Database\Context $database)
-	{
-		$this->database = $database;
-	}
 
 	protected function startup()
 	{
@@ -38,6 +28,11 @@ class SecuredPresenter extends BasePresenter
 			$this->redirect('Sign:in', array('backlink' => $this->storeRequest()));
 
 		}
+	}
+
+	public function handleLogout(){
+		$this->getUser()->logout();
+		$this->redirect("Sign:In");
 	}
 
 	protected function beforeRender()
