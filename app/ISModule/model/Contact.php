@@ -17,9 +17,28 @@ use Nette;
  */
 class Contact extends MyModel
 {
+	private $id;
+
+	/**
+	 * Contact constructor.
+	 * @param $id
+	 */
+	public function __construct($id)
+	{
+		parent::__construct("Kontakt");
+		if($id){
+			$this->getById($id);
+		}
+	}
+
 	public function getById($id)
 	{
 		// TODO: Implement getById() method.
+	}
+
+	public function saveModel()
+	{
+		// TODO: Implement saveModel() method.
 	}
 
 }
