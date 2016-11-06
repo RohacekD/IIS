@@ -10,8 +10,7 @@ namespace App\ISModule\Model;
 
 use Nette;
 
-class Property
+class Property extends MyModel
 {
-	use Nette\SmartObject;
 
 }

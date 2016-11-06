@@ -15,8 +15,11 @@ use Nette;
  * @package App\ISModule\Model
  * TODO: Facade?
  */
-class Contact
+class Contact extends MyModel
 {
-	use Nette\SmartObject;
+	public function getById($id)
+	{
+		// TODO: Implement getById() method.
+	}
 
 }

@@ -11,8 +11,23 @@ namespace App\ISModule\Model;
 use Nette;
 
 
-class Pause
+class Pause extends MyModel
 {
-	use Nette\SmartObject;
+	/**
+	 * Pause constructor.
+	 * @param int $id
+	 */
+	public function __construct($id = null)
+	{
+		parent::__construct("prestavka");
+		if($id){
+			$this->getById($id);
+		}
+	}
+
+	public function getById($id)
+	{
+		// TODO: Implement getById() method.
+	}
 
 }

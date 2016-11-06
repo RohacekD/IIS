@@ -10,8 +10,7 @@ namespace App\ISModule\Model;
 
 use Nette;
 
-class Role
+class Role extends MyModel
 {
-	use Nette\SmartObject;
 
 }

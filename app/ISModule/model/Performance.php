@@ -10,8 +10,27 @@ namespace App\ISModule\Model;
 
 use Nette;
 
-class Performance
+class Performance extends MyModel
 {
-	use Nette\SmartObject;
+
+
+	/**
+	 * Performance constructor.
+	 * @param int $id
+	 */
+	public function __construct($id = null)
+	{
+		parent::__construct("predstaveni");
+		if($id){
+			$this->getById($id);
+		}
+	}
+
+	public function getById($id)
+	{
+		$row = $this->getModelsRow($id);
+
+	}
+
 
 }

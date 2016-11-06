@@ -10,8 +10,7 @@ namespace App\ISModule\Model;
 
 use Nette;
 
-class Play
+class Play extends MyModel
 {
-	use Nette\SmartObject;
 
 }
