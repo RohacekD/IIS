@@ -18,6 +18,9 @@ use Nette;
  */
 class Production extends MyModel
 {
+	/**
+	 * Defines all scenes in theatre
+	 */
 	const SCENES = array("Malá", "Velká");
 	/** @var int */
 	private $id = null;
@@ -166,9 +169,16 @@ class Production extends MyModel
 	public function getById($id)
 	{
 		$row = $this->getModelsRow($id);
-
+		$this->id = $row["id"];
+		$this->play_id = $row["ID_Divadelni_hra"];
+		$this->director = $row["login_Reziser"];
+		$this->setScene($row["scena"]);
+		$this->name = $row["nazev"];
 	}
 
+	/**
+	 * @throws Exception
+	 */
 	public function saveModel()
 	{
 		$data = array();
@@ -182,6 +192,7 @@ class Production extends MyModel
 		$data["scena"] = $this->scene;
 		$data["login_Reziser"] = $this->director_id;
 		$data["ID_Divadelni_hra"] = $this->play_id;
+		$this->saveToDB($data);
 	}
 
 
