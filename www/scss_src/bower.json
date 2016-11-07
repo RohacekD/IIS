@@ -5,7 +5,12 @@
     "sass-bootstrap": "~3.0.0",
     "jquery": "~1.10.2",
     "matchHeight": "~0.6.0",
-    "components-font-awesome": "~4.3.0"
+    "components-font-awesome": "~4.3.0",
+    "ublaboo-datagrid": "^4.4.22"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "jquery": ">= 1.11.0 <3.0",
+    "nette-forms": "^2.3"
+  }
 }

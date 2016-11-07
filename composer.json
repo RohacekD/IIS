@@ -37,7 +37,7 @@
 	"tracy/tracy": "^2.4",
 	"dg/adminer-custom": "^1.6",
     "kdyby/translation": "@dev",
-    "o5/grido": "^2.1"
+    "ublaboo/datagrid": "^4.4"
   },
   "require-dev": {
 	"nette/tester": "dev-feature/teamcity-output"

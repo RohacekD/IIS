@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6a4ef8eeb1cd85ce677e1739c0ac3b1b",
+    "content-hash": "195569b2def242df22d0efc87fbe2875",
     "packages": [
         {
             "name": "dg/adminer-custom",
@@ -514,63 +514,6 @@
             "time": "2016-10-18T13:27:34+00:00"
         },
         {
-            "name": "nette/deprecated",
-            "version": "v2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/deprecated.git",
-                "reference": "fde8fea8e3f1960ea6bcca03a996300b0ca41762"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/deprecated/zipball/fde8fea8e3f1960ea6bcca03a996300b0ca41762",
-                "reference": "fde8fea8e3f1960ea6bcca03a996300b0ca41762",
-                "shasum": ""
-            },
-            "require-dev": {
-                "latte/latte": "^2.2",
-                "nette/application": "^2.2",
-                "nette/bootstrap": "^2.2.1",
-                "nette/caching": "^2.2",
-                "nette/forms": "^2.2",
-                "nette/mail": "^2.2",
-                "nette/robot-loader": "^2.2",
-                "nette/safe-stream": "^2.2",
-                "nette/security": "^2.2",
-                "nette/tester": "^1.1",
-                "nette/utils": "^2.2",
-                "tracy/tracy": "^2.2"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ],
-                "files": [
-                    "src/loader.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "APIs and features removed from Nette Framework",
-            "homepage": "https://nette.org",
-            "time": "2016-07-15T13:19:27+00:00"
-        },
-        {
             "name": "nette/di",
             "version": "v2.4.3",
             "source": {
@@ -921,83 +864,6 @@
             "time": "2016-06-25T13:59:48+00:00"
         },
         {
-            "name": "nette/nette",
-            "version": "v2.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/nette.git",
-                "reference": "25381e4ec7902734e49924c1ffd07017830c5f31"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/nette/zipball/25381e4ec7902734e49924c1ffd07017830c5f31",
-                "reference": "25381e4ec7902734e49924c1ffd07017830c5f31",
-                "shasum": ""
-            },
-            "require": {
-                "latte/latte": "^2.4",
-                "nette/application": "^2.4",
-                "nette/bootstrap": "^2.4",
-                "nette/caching": "^2.5",
-                "nette/component-model": "^2.3",
-                "nette/database": "^2.4",
-                "nette/deprecated": "^2.3",
-                "nette/di": "^2.4",
-                "nette/finder": "^2.4",
-                "nette/forms": "^2.4",
-                "nette/http": "^2.4",
-                "nette/mail": "^2.4",
-                "nette/neon": "^2.4",
-                "nette/php-generator": "^2.4",
-                "nette/reflection": "^2.4",
-                "nette/robot-loader": "^2.4",
-                "nette/safe-stream": "^2.3",
-                "nette/security": "^2.4",
-                "nette/tokenizer": "^2.2",
-                "nette/utils": "^2.4",
-                "tracy/tracy": "^2.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "Nette/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "Nette Framework - innovative framework for fast and easy development of secured web applications in PHP. Write less, have cleaner code and your work will bring you joy.",
-            "homepage": "https://nette.org",
-            "keywords": [
-                "Forms",
-                "database",
-                "debugging",
-                "framework",
-                "mailing",
-                "mvc",
-                "templating"
-            ],
-            "time": "2016-05-03T15:59:52+00:00"
-        },
-        {
             "name": "nette/php-generator",
             "version": "v2.4.1",
             "source": {
@@ -1285,56 +1151,6 @@
             "time": "2016-05-17T15:49:45+00:00"
         },
         {
-            "name": "nette/tokenizer",
-            "version": "v2.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nette/tokenizer.git",
-                "reference": "0fec1255bd2d062229e81cad3bfba806a8ea6096"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nette/tokenizer/zipball/0fec1255bd2d062229e81cad3bfba806a8ea6096",
-                "reference": "0fec1255bd2d062229e81cad3bfba806a8ea6096",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.1"
-            },
-            "conflict": {
-                "nette/nette": "<2.2"
-            },
-            "require-dev": {
-                "nette/tester": "~1.7",
-                "tracy/tracy": "^2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause",
-                "GPL-2.0",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "David Grudl",
-                    "homepage": "https://davidgrudl.com"
-                },
-                {
-                    "name": "Nette Community",
-                    "homepage": "https://nette.org/contributors"
-                }
-            ],
-            "description": "Nette Tokenizer",
-            "homepage": "https://nette.org",
-            "time": "2016-04-21T13:06:32+00:00"
-        },
-        {
             "name": "nette/utils",
             "version": "v2.4.1",
             "source": {
@@ -1398,62 +1214,52 @@
             "time": "2016-09-28T17:57:14+00:00"
         },
         {
-            "name": "o5/grido",
-            "version": "2.1.2",
+            "name": "paragonie/random_compat",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/o5/grido.git",
-                "reference": "e243cef128591067ee1e5315f14e1cac119271ff"
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/o5/grido/zipball/e243cef128591067ee1e5315f14e1cac119271ff",
-                "reference": "e243cef128591067ee1e5315f14e1cac119271ff",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
+                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
                 "shasum": ""
             },
             "require": {
-                "nette/nette": "~2.0",
-                "php": ">=5.3",
-                "symfony/property-access": "~2.6"
+                "php": ">=5.2.0"
             },
             "require-dev": {
-                "dibi/dibi": "~2.3.1",
-                "kdyby/doctrine": "~2.3.0",
-                "mockery/mockery": "~0.9.3",
-                "nette/nette": "~2.2.0",
-                "nette/tester": "~1.4.0",
-                "squizlabs/php_codesniffer": "~2.3.0"
+                "phpunit/phpunit": "4.*|5.*"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "type": "library",
             "autoload": {
-                "psr-4": {
-                    "Grido\\": "src"
-                }
+                "files": [
+                    "lib/random.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD-3",
-                "GPL-2.0",
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
-                    "name": "Petr Bugyík",
-                    "homepage": "http://petr.bugyik.cz/"
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
                 }
             ],
-            "description": "Grido - DataGrid for Nette Framework",
-            "homepage": "http://o5.github.io/grido-examples/",
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
             "keywords": [
-                "datagrid",
-                "datalist",
-                "grid",
-                "list",
-                "nette",
-                "table",
-                "tablegrid"
+                "csprng",
+                "pseudorandom",
+                "random"
             ],
-            "time": "2016-01-11T10:41:43+00:00"
+            "time": "2016-10-17T15:23:22+00:00"
         },
         {
             "name": "psr/log",
@@ -1605,6 +1411,63 @@
             "time": "2016-07-20T05:43:46+00:00"
         },
         {
+            "name": "symfony/inflector",
+            "version": "v3.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/inflector.git",
+                "reference": "1ea83acdd81053bdf35ccf3ee91f01b243664b61"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/inflector/zipball/1ea83acdd81053bdf35ccf3ee91f01b243664b61",
+                "reference": "1ea83acdd81053bdf35ccf3ee91f01b243664b61",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Inflector\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bernhard Schussek",
+                    "email": "bschussek@gmail.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Inflector Component",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "inflection",
+                "pluralize",
+                "singularize",
+                "string",
+                "symfony",
+                "words"
+            ],
+            "time": "2016-06-08T11:24:07+00:00"
+        },
+        {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.2.0",
             "source": {
@@ -1664,26 +1527,87 @@
             "time": "2016-05-18T14:26:46+00:00"
         },
         {
-            "name": "symfony/property-access",
-            "version": "v2.8.13",
+            "name": "symfony/polyfill-php70",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/property-access.git",
-                "reference": "2dafa20e25cb964268ce3ed83fc9af9b9d2ae14d"
+                "url": "https://github.com/symfony/polyfill-php70.git",
+                "reference": "a42f4b6b05ed458910f8af4c4e1121b0101b2d85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/property-access/zipball/2dafa20e25cb964268ce3ed83fc9af9b9d2ae14d",
-                "reference": "2dafa20e25cb964268ce3ed83fc9af9b9d2ae14d",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/a42f4b6b05ed458910f8af4c4e1121b0101b2d85",
+                "reference": "a42f4b6b05ed458910f8af4c4e1121b0101b2d85",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "paragonie/random_compat": "~1.0|~2.0",
+                "php": ">=5.3.3"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "1.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Php70\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ],
+                "classmap": [
+                    "Resources/stubs"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill backporting some PHP 7.0+ features to lower PHP versions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2016-05-18T14:26:46+00:00"
+        },
+        {
+            "name": "symfony/property-access",
+            "version": "v3.1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/property-access.git",
+                "reference": "6d7212a9bcaacb2c46ed401d0bbaf56c975ab640"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/property-access/zipball/6d7212a9bcaacb2c46ed401d0bbaf56c975ab640",
+                "reference": "6d7212a9bcaacb2c46ed401d0bbaf56c975ab640",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/inflector": "~3.1",
+                "symfony/polyfill-php70": "~1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -1721,7 +1645,7 @@
                 "property path",
                 "reflection"
             ],
-            "time": "2016-07-30T07:20:35+00:00"
+            "time": "2016-08-15T13:15:28+00:00"
         },
         {
             "name": "symfony/translation",
@@ -1848,6 +1772,158 @@
                 "nette"
             ],
             "time": "2016-09-30T14:17:54+00:00"
+        },
+        {
+            "name": "ublaboo/controls",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ublaboo/controls.git",
+                "reference": "1906def22711d5f0d9a98efb3b5f291c60e8735f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ublaboo/controls/zipball/1906def22711d5f0d9a98efb3b5f291c60e8735f",
+                "reference": "1906def22711d5f0d9a98efb3b5f291c60e8735f",
+                "shasum": ""
+            },
+            "require": {
+                "nette/di": "^2.4|^2.3",
+                "nette/forms": "^2.4|^2.3"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "nette/tester": "~1.6.1",
+                "tracy/tracy": "~2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ublaboo\\Controls\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Janda",
+                    "homepage": "http://paveljanda.com"
+                }
+            ],
+            "description": "Extension for Nette Framework: Controls: that has not translatable content (radiolist, selectbox), custom label text input",
+            "homepage": "http://ublaboo.paveljanda.com/controls",
+            "keywords": [
+                "controls",
+                "extension",
+                "nette"
+            ],
+            "time": "2016-07-02T14:54:04+00:00"
+        },
+        {
+            "name": "ublaboo/datagrid",
+            "version": "v4.4.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ublaboo/datagrid.git",
+                "reference": "d8781a37a4234a21e082bab1b047decc839fe2b5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ublaboo/datagrid/zipball/d8781a37a4234a21e082bab1b047decc839fe2b5",
+                "reference": "d8781a37a4234a21e082bab1b047decc839fe2b5",
+                "shasum": ""
+            },
+            "require": {
+                "nette/application": "^2.3|^2.4",
+                "nette/forms": "^2.3|^2.4",
+                "nette/utils": ">=2.3.10",
+                "symfony/property-access": "~3.0",
+                "ublaboo/controls": "~1.0.1",
+                "ublaboo/responses": "~1.0.0"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.5",
+                "mockery/mockery": "~0.9",
+                "nette/database": "^2.3|^2.4",
+                "nette/tester": "^1.6.1",
+                "nextras/orm": "~2.0",
+                "tharos/leanmapper": "~2.2.0",
+                "tracy/tracy": "^2.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ublaboo\\DataGrid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Janda",
+                    "homepage": "http://paveljanda.com"
+                }
+            ],
+            "description": "DataGrid for Nette Framework: filtering, sorting, pagination, tree view, table view, translator, etc",
+            "homepage": "http://ublaboo.paveljanda.com/datagrid",
+            "keywords": [
+                "datagrid",
+                "grid",
+                "nette"
+            ],
+            "time": "2016-10-11T20:18:55+00:00"
+        },
+        {
+            "name": "ublaboo/responses",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ublaboo/responses.git",
+                "reference": "5858609c5274f130db992720112a60fe1df33089"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ublaboo/responses/zipball/5858609c5274f130db992720112a60fe1df33089",
+                "reference": "5858609c5274f130db992720112a60fe1df33089",
+                "shasum": ""
+            },
+            "require": {
+                "nette/http": "^2.3|^2.4",
+                "nette/utils": "^2.3|^2.4"
+            },
+            "suggest": {
+                "psr/http-message": "Allows usage of PSR7 stream response."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ublaboo\\Responses\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pavel Janda",
+                    "homepage": "http://paveljanda.com"
+                }
+            ],
+            "description": "Additional responses for Nette Framework",
+            "homepage": "http://ublaboo.paveljanda.com/responses",
+            "keywords": [
+                "csv",
+                "image",
+                "json",
+                "nette",
+                "responses"
+            ],
+            "time": "2016-08-10T12:47:50+00:00"
         }
     ],
     "packages-dev": [

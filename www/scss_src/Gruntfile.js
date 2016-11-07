@@ -15,7 +15,16 @@ module.exports = function(grunt) {
             libUglify: {
                 files: {
                     '<%= config.jsFolder %>/lib/jquery.min.js': ['lib/jquery/jquery.js'],
-                    '<%= config.jsFolder %>/lib/bootstrap.min.js': ['lib/sass-bootstrap/bootstrap.js']
+                    '<%= config.jsFolder %>/lib/bootstrap.min.js': ['lib/sass-bootstrap/bootstrap.js'],
+                    '<%= config.jsFolder %>/lib/bootstrap-datepicker.min.js': ['bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js'],
+                    '<%= config.jsFolder %>/lib/ublaboo-datagrid/datagrid.js': ['bower_components/ublaboo-datagrid/assets/dist/datagrid.min.js'],
+                    '<%= config.jsFolder %>/lib/happy/happy.js': ['bower_components/happy/dist/happy.min.js'],
+                    '<%= config.jsFolder %>/lib/ublaboo-datagrid/datagrid-instant-url-refresh.js': ['bower_components/ublaboo-datagrid/assets/dist/datagrid-instant-url-refresh.min.js'],
+                    '<%= config.jsFolder %>/lib/ublaboo-datagrid/datagrid-spinners.js': ['bower_components/ublaboo-datagrid/assets/dist/datagrid-spinners.min.js'],
+                    '<%= config.jsFolder %>/lib/nette/netteForms.min.js': ['bower_components/nette-forms/src/assets/netteForms.js'],
+                    '<%= config.jsFolder %>/lib/nette/nette.ajax.min.js': ['bower_components/nette.ajax.js/nette.ajax.js'],
+                    '<%= config.jsFolder %>/lib/jquery-ui-sortable.min.js': ['bower_components/jquery-ui-sortable/jquery-ui-sortable.js']
+
 
                 }
             }
@@ -27,7 +36,11 @@ module.exports = function(grunt) {
             },
             libUglify: {
                 files: {
-                    '<%= config.cssFolder %>/bootstrap.min.css': ['lib/sass-bootstrap/bootstrap.css']
+                    '<%= config.cssFolder %>/bootstrap.min.css': ['lib/sass-bootstrap/bootstrap.css'],
+                    '<%= config.cssFolder %>/happy.min.css': ['lib/happy/dist/happy.css'],
+                    '<%= config.cssFolder %>/bootstrap-datepicker3.min.css': ['bootstrap-datepicker/dist/css/bootstrap-datepicker3.css'],
+                    '<%= config.cssFolder %>/datagrid.min.css': ['lib/ublaboo-datagrid/assets/dist/datagrid.css'],
+                    '<%= config.cssFolder %>/datagrid-spinners.min.css': ['lib/ublaboo-datagrid/assets/dist/datagrid-spinners.css'],
                 }
             },
             build: {

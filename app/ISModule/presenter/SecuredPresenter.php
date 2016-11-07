@@ -8,16 +8,15 @@
 
 namespace App\ISModule\Presenters;
 
-use App\ISModule\Presenters\BasePresenter;
 use Nette;
 
 
 class SecuredPresenter extends BasePresenter
 {
 	/** @var Nette\Http\Request @inject */
-	protected $http_request;
+	public $http_request;
 	/** @var Nette\Database\Context @inject */
-	protected $database;
+	public $database;
 
 	protected function startup()
 	{
