@@ -9,7 +9,7 @@
 namespace App\ISModule\Presenters;
 
 
-class PlaysPresenter
+class PlaysPresenter extends SecuredPresenter
 {
 
 }

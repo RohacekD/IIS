@@ -9,6 +9,8 @@
 namespace App\ISModule\Presenters;
 
 use Nette;
+use Tracy\Debugger;
+use App\ISModule\Controls;
 
 
 class SecuredPresenter extends BasePresenter
@@ -18,20 +20,23 @@ class SecuredPresenter extends BasePresenter
 	/** @var Nette\Database\Context @inject */
 	public $database;
 
+	public function handleLogout() {
+		$this->getUser()->logout();
+		$this->redirect( "Sign:In" );
+	}
+
+	protected function createComponentMenu() {
+		return new Controls\MenuControl( $this->getUser()->getIdentity() );
+	}
+
 	protected function startup()
 	{
 		parent::startup();
-
 		if(!$this->getUser()->isLoggedIn()){
 
 			$this->redirect('Sign:in', array('backlink' => $this->storeRequest()));
 
 		}
-	}
-
-	public function handleLogout(){
-		$this->getUser()->logout();
-		$this->redirect("Sign:In");
 	}
 
 	protected function beforeRender()
