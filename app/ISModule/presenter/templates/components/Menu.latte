@@ -1,3 +1,4 @@
-<ul n:inner-foreach="$menuItems as $menuItem => $menuHref ">
-	<li><a href="{plink $menuHref}">{$menuItem}</a></li>
+<ul class="sidebar-nav" n:inner-foreach="$menuItems as $menuHref => $menuItem ">
+	<li class="{$menuItem["class"]}"><a href="{plink $menuHref}">{$menuItem["name"]}</a></li>
 </ul>
+

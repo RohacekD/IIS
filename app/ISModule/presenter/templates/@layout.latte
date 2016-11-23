@@ -12,6 +12,7 @@
 	<title>{ifset title}{include title|stripHtml} | {/ifset} - IIS Project</title>
 
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{$basePath}/css/simple-sidebar.css">
 	<link rel="stylesheet" href="{$basePath}/css/style.css">
 	<link rel="stylesheet" href="{$basePath}/css/dominicek.css">
 	<link rel="stylesheet" type="text/css" href="{$basePath}/css/happy.min.css">
@@ -30,9 +31,27 @@
 
 <body>
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-{control menu}
-{include content}
 
+
+<nav id="top-navbar" class="navbar navbar-static-top navbar-inverse">
+	<a class="navbar-brand" href="#"><img src="{$basePath}/images/logo_small.png"> </a>
+	{*{control statusPanel}*}
+</nav>
+
+<div id="wrapper">
+
+	<!-- Sidebar -->
+	<div id="sidebar-wrapper">
+		{control menu}
+
+	</div>
+
+	<div id="page-content-wrapper">
+		<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+		{include content}
+
+	</div>
+</div>
 {block scripts}
 	<script src="{$basePath}/js/lib/jquery.min.js"></script>
 	<script src="{$basePath}/js/lib/nette/netteForms.min.js"></script>
