@@ -36,7 +36,13 @@ class PerformanceControl extends Control {
 	/** @var Nette\Database\Context */
 	protected $database;
 
-	public function __construct( Nette\Security\Identity $user, Nette\Database\Context $database ) {
+	/**
+	 * PerformanceControl constructor.
+	 *
+	 * @param Nette\Security\IIdentity $user
+	 * @param Nette\Database\Context $database
+	 */
+	public function __construct( Nette\Security\IIdentity $user, Nette\Database\Context $database ) {
 		parent::__construct();
 		$this->database = $database;
 		$this->user     = $user;
@@ -55,18 +61,36 @@ class PerformanceControl extends Control {
 		$this->template->render();
 	}
 
+	/**
+	 * @return bool|mixed|Nette\Database\Table\IRow
+	 */
 	private function getPerformance() {
 		return $this->database->table( self::PERFORMANCE_TABLE )->where( "ID", $this->id )->fetch();
 	}
 
+	/**
+	 * @param $id
+	 *
+	 * @return bool|mixed|Nette\Database\Table\IRow
+	 */
 	private function getProduction( $id ) {
 		return $this->database->table( self::PRODUCTION_TABLE )->where( "ID", $id )->fetch();
 	}
 
+	/**
+	 * @param $id
+	 *
+	 * @return bool|mixed|Nette\Database\Table\IRow
+	 */
 	private function getPlay( $id ) {
 		return $this->database->table( self::PLAY_TABLE )->where( "ID", $id )->fetch();
 	}
 
+	/**
+	 * @param $productionId
+	 *
+	 * @return array|Nette\Database\Table\IRow[]|Nette\Database\Table\Selection
+	 */
 	private function getRoles( $productionId ) {
 		$actorsRoles = $this->database->table( self::ACTOR_ROLES_TABLE )->where( "LOGIN_HEREC", $this->user->getId() )->select( "ID_Role" )->fetchAll();
 		$roles       = array();

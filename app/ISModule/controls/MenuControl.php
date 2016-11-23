@@ -12,6 +12,10 @@ use Nette\Application\UI\Control,
     Nette;
 use Tracy\Debugger;
 
+/**
+ * Class MenuControl
+ * @package App\ISModule\Controls
+ */
 class MenuControl extends Control
 {
     /** @var Nette\Database\Context */
@@ -19,18 +23,29 @@ class MenuControl extends Control
     /** @var  Nette\Security\Identity */
     private $user;
 
-    public function __construct(Nette\Security\Identity $user)
+	/**
+	 * MenuControl constructor.
+	 *
+	 * @param Nette\Security\IIdentity $user
+	 */
+	public function __construct( Nette\Security\IIdentity $user )
     {
         parent::__construct();
         $this->user = $user;
     }
 
-    public function injectDatabase(Nette\Database\Context $database)
+	/**
+	 * @param Nette\Database\Context $database
+	 */
+	public function injectDatabase( Nette\Database\Context $database )
     {
         $this->database = $database;
     }
 
-    public function render()
+	/**
+	 *
+	 */
+	public function render()
     {
         $this->template->setFile(__DIR__ . "/../presenter/templates/components/Menu.latte");
         $this->template->menuItems = $this->createMenu();

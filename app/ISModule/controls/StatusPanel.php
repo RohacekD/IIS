@@ -12,6 +12,10 @@ use Nette\Application\UI\Control,
 	Nette;
 use Tracy\Debugger;
 
+/**
+ * Class StatusPanel
+ * @package App\ISModule\Controls
+ */
 class StatusPanel extends Control {
 	/** @var Nette\Database\Context */
 	protected $database;
@@ -21,10 +25,10 @@ class StatusPanel extends Control {
 	/**
 	 * StatusPanel constructor.
 	 *
-	 * @param Nette\Security\Identity $user
+	 * @param Nette\Security\IIdentity $user
 	 * @param Nette\Database\Context $database
 	 */
-	public function __construct( Nette\Security\Identity $user, Nette\Database\Context $database ) {
+	public function __construct( Nette\Security\IIdentity $user, Nette\Database\Context $database ) {
 		parent::__construct();
 		$this->database = $database;
 		$this->user     = $user;
@@ -39,6 +43,9 @@ class StatusPanel extends Control {
 		$this->template->render();
 	}
 
+	/**
+	 *
+	 */
 	public function handleLogout() {
 		$this->getPresenter()->handleLogout();
 	}
