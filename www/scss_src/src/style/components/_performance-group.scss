@@ -2,6 +2,8 @@
 
 .performance-group {
   @include clearfix();
-  width: 100%;
-  
+
+  .performance-control-content {
+    background-color: olive;
+  }
 }
