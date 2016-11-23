@@ -37,11 +37,14 @@ class SignInFormFactory
 	public function create(callable $onSuccess)
 	{
 		$form = $this->factory->create();
+        $form->elementPrototype->addAttributes(array('class' => 'form-signin'));
 		$form->addText('username', 'forms.login.username')
-			->setRequired('forms.login.usernameHint');
+            ->setRequired('forms.login.usernameHint')
+            ->setAttribute('class', 'form-control');
 
 		$form->addPassword('password', 'forms.login.password')
-			->setRequired('forms.login.passwordHint');
+            ->setRequired('forms.login.passwordHint')
+            ->setAttribute('class', 'form-control');
 
 		$form->addCheckbox('remember', 'forms.login.keepLogIn');
 

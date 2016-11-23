@@ -126,5 +126,5 @@ module.exports = function(grunt) {
     //produce
     grunt.registerTask('produce', ['uglify:build', 'sass','cssmin:build']);
     // Set Up task
-    grunt.registerTask('setUp', ['bower:install', 'uglify:libUglify', 'cssmin:libUglify', 'copy:setUp', 'copy:fontAwesome', 'clean:setUp']);
+    grunt.registerTask('setUp', ['bower:install', 'uglify:libUglify', 'copy:setUp', 'copy:fontAwesome', 'clean:setUp']);
 };
