@@ -26,7 +26,7 @@ class SecuredPresenter extends BasePresenter
 	}
 
 	public function createComponentStatusPanel() {
-		return new Controls\StatusPanel();
+		return new Controls\StatusPanel( $this->getUser()->getIdentity(), $this->database );
 	}
 
 	protected function createComponentMenu() {

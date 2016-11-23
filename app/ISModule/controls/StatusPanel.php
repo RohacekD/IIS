@@ -10,21 +10,36 @@ namespace App\ISModule\Controls;
 
 use Nette\Application\UI\Control,
 	Nette;
+use Tracy\Debugger;
 
 class StatusPanel extends Control {
 	/** @var Nette\Database\Context */
 	protected $database;
+	/** @var Nette\Security\Identity */
+	private $user;
 
-	public function __construct( $id ) {
+	/**
+	 * StatusPanel constructor.
+	 *
+	 * @param Nette\Security\Identity $user
+	 * @param Nette\Database\Context $database
+	 */
+	public function __construct( Nette\Security\Identity $user, Nette\Database\Context $database ) {
 		parent::__construct();
-	}
-
-	public function injectDatabase( Nette\Database\Context $database ) {
 		$this->database = $database;
+		$this->user     = $user;
 	}
 
+	/**
+	 *
+	 */
 	public function render() {
 		$this->template->setFile( __DIR__ . "/../presenter/templates/components/StatusPanel.latte" );
+		$this->template->user = $this->user;
 		$this->template->render();
+	}
+
+	public function handleLogout() {
+		$this->getPresenter()->handleLogout();
 	}
 }

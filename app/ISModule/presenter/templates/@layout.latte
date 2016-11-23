@@ -31,12 +31,7 @@
 
 <body>
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
-
-<nav id="top-navbar" class="navbar navbar-static-top navbar-inverse">
-	<a class="navbar-brand" href="#"><img src="{$basePath}/images/logo_small.png"> </a>
-	{*{control statusPanel}*}
-</nav>
+{control statusPanel}
 
 <div id="wrapper">
 
