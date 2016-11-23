@@ -30,6 +30,8 @@ class PropertiesPresenter extends SecuredPresenter
 			->setTitle('Delete')
 			->setClass('btn btn-xs btn-danger ajax')
 			->setConfirm('Do you really want to delete example %s?', 'nazev');
+
+		$grid->setItemsDetail();
 	}
 
 
