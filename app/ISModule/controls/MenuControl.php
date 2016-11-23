@@ -19,6 +19,7 @@ class MenuControl extends Control {
 	private $user;
 
 	public function __construct( Nette\Security\Identity $user ) {
+		parent::__construct();
 		$this->user = $user;
 	}
 
