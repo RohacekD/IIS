@@ -53,6 +53,13 @@ module.exports = function(grunt) {
 				}]
             }
         },
+
+        watch: {
+            sass: {
+                files: ['src/style/**/*.{scss,sass}', 'src/style/**/*.{scss,sass}'],
+                tasks: ['sass:dist', 'copy:build']
+            }
+        },
         bower: {
             install: {
                 options: {
@@ -111,9 +118,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-spritesmith');
     grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
 
     // Default task(s).
-    grunt.registerTask('default', ['sass','copy:build']);
+    grunt.registerTask('default', ['sass', 'copy:build', 'watch']);
     //produce
     grunt.registerTask('produce', ['uglify:build', 'sass','cssmin:build']);
     // Set Up task

@@ -1,3 +1,8 @@
 properties:
 	name: "Název"
 	state: "Stav"
+productions:
+	date: "Datum"
+	name: "Název představení"
+	scene: "Scene"
+	director: "Režisér"
