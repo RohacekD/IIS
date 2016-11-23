@@ -186,15 +186,50 @@ html, body {
   display: block;
   width: 100%;
   height: 50px;
-  background-color: #555555;
   border: 1px solid #222222;
+  background-color: #555555;
   line-height: 50px;
   vertical-align: middle;
+
+}
+
+.sidebar-nav li a {
+  color: #B2D1EB;
+  font-size: 1.1em;
 }
 
 .sidebar-nav li :hover {
   background-color: #555555;
+}
+
+.sidebar-nav li.performance {
+  background-image: url("../images/icons/performance.png");
+  background-repeat: no-repeat;
+  background-position: 98%;
+  background-size: 40px;
 
 }
 
+.sidebar-nav li.role {
+  background-image: url("../images/icons/role.png");
+  background-repeat: no-repeat;
+  background-position: 98%;
+  background-size: 40px;
 
+}
+
+.sidebar-nav li.rehearsals {
+  background-image: url("../images/icons/rehearsals.png");
+  background-repeat: no-repeat;
+  background-position: 98%;
+  background-size: 40px;
+
+}
+
+.sidebar-nav li.production {
+  background-image: url("../images/icons/production.png");
+  background-repeat: no-repeat;
+  background-position: 98%;
+  background-size: 40px;
+
+}
