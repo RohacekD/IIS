@@ -1,0 +1,7 @@
+@import "../core/mixins";
+
+.performance-group {
+  @include clearfix();
+  width: 100%;
+  
+}

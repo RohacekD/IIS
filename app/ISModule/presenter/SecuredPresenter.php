@@ -25,6 +25,10 @@ class SecuredPresenter extends BasePresenter
 		$this->redirect( "Sign:In" );
 	}
 
+	public function createComponentStatusPanel() {
+		return new Controls\StatusPanel();
+	}
+
 	protected function createComponentMenu() {
 		return new Controls\MenuControl( $this->getUser()->getIdentity() );
 	}

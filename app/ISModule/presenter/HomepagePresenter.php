@@ -14,6 +14,7 @@ class HomepagePresenter extends SecuredPresenter
 		return new Controls\PerformanceControl( $id );
 	}
 
+
 	public function renderDefault()
 	{
 
