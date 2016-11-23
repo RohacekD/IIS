@@ -1,8 +1,8 @@
 <div class="performance-control col-lg-2 well">
 	<div class="performance-control-content">
-		<h3>Predstaveni</h3>
-		<img class="img-rounded" alt="">
-		<p>Moje role :*</p>
-		<time>cas</time>
+		<h3>{$production->nazev}</h3>
+		<img class="img-rounded" src="{$basePath}/images/store/{$play->fotka}" alt="{$production->nazev}">
+		<p n:inner-foreach="$roles as $role">{$role->nazev} {sep}, {/sep} </p>
+		<time>{$performance->Datum|date:"%d. %m. %Y"}{$performance->Datum|date:"%H:%M:%S"}</time>
 	</div>
 </div>

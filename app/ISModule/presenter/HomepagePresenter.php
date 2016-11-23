@@ -10,8 +10,8 @@ use App\ISModule\Controls;
 class HomepagePresenter extends SecuredPresenter
 {
 
-	public function createComponentPerformance( $id ) {
-		return new Controls\PerformanceControl( $id );
+	public function createComponentPerformance() {
+		return new Controls\PerformanceControl( $this->getUser()->getIdentity(), $this->database );
 	}
 
 

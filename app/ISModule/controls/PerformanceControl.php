@@ -10,21 +10,74 @@ namespace App\ISModule\Controls;
 
 use Nette\Application\UI\Control,
 	Nette;
+use Tracy\Debugger;
 
+/**
+ * Class PerformanceControl
+ * @package App\ISModule\Controls
+ */
 class PerformanceControl extends Control {
+	/**
+	 *
+	 */
+	const PERFORMANCE_TABLE = "Predstaveni",
+		PRODUCTION_TABLE = "Inscenace",
+		ACTOR_ROLES_TABLE = "Role_Herec",
+		ROLE_TABLE = "Role",
+		PLAY_TABLE = "Divadelni_hra";
+	/**
+	 * @var
+	 */
+	public $id;
+	/**
+	 * @var Nette\Security\Identity
+	 */
+	public $user;
 	/** @var Nette\Database\Context */
 	protected $database;
 
-	public function __construct( $id ) {
+	public function __construct( Nette\Security\Identity $user, Nette\Database\Context $database ) {
 		parent::__construct();
-	}
-
-	public function injectDatabase( Nette\Database\Context $database ) {
 		$this->database = $database;
+		$this->user     = $user;
 	}
 
-	public function render() {
+	/**
+	 * Prepare data for rendering
+	 */
+	public function render( $id ) {
+		$this->id = $id;
 		$this->template->setFile( __DIR__ . "/../presenter/templates/components/Performance.latte" );
+		$this->template->performance = $this->getPerformance();
+		$this->template->production  = $this->getProduction( $this->template->performance->ID );
+		$this->template->play        = $this->getPlay( $this->template->production->ID_Divadelni_hra );
+		$this->template->roles       = $this->getRoles( $this->template->production->ID );
 		$this->template->render();
+	}
+
+	private function getPerformance() {
+		return $this->database->table( self::PERFORMANCE_TABLE )->where( "ID", $this->id )->fetch();
+	}
+
+	private function getProduction( $id ) {
+		return $this->database->table( self::PRODUCTION_TABLE )->where( "ID", $id )->fetch();
+	}
+
+	private function getPlay( $id ) {
+		return $this->database->table( self::PLAY_TABLE )->where( "ID", $id )->fetch();
+	}
+
+	private function getRoles( $productionId ) {
+		$actorsRoles = $this->database->table( self::ACTOR_ROLES_TABLE )->where( "LOGIN_HEREC", $this->user->getId() )->select( "ID_Role" )->fetchAll();
+		$roles       = array();
+		foreach ( $actorsRoles as $role ) {
+			$roles[] = $role->ID_Role;
+		}
+		$rolesNames = $this->database->table( self::ROLE_TABLE )->where( [
+			"ID"           => $roles,
+			"ID_inscenace" => $productionId
+		] )->fetchAll();
+
+		return $rolesNames;
 	}
 }
