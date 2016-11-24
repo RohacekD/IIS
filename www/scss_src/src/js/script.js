@@ -32,7 +32,7 @@ function picResize() {
  * window resize or load.
  */
 function sizeOperations() {
-	$(".row .performance-control, .row .performance-control .well").matchHeight();
+	$(".performance-control .performance-control-content").matchHeight();
 	console.log("ahoj");
 }
 
