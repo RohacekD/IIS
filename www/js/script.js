@@ -32,6 +32,8 @@ function picResize() {
  * window resize or load.
  */
 function sizeOperations() {
+	$(".row .performance-control, .row .performance-control .well").matchHeight();
+	console.log("ahoj");
 }
 
 $(window).resize(function () {

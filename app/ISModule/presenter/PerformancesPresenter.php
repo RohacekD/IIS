@@ -21,7 +21,7 @@ use Nette;
  */
 class PerformancesPresenter extends SecuredPresenter {
 	/**
-	 * @var Nette\Database\Table\Selection
+	 * @var @persistent Nette\Database\Table\Selection
 	 */
 	private $gridDataSource;
 
@@ -33,7 +33,7 @@ class PerformancesPresenter extends SecuredPresenter {
 		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
 		$presenter            = $this;
 		$source = $this->gridDataSource;
-		$grid->setPrimaryKey( "ID" );
+		$grid->setPrimaryKey( "Predstaveni.ID" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
 		$grid->setItemsDetail( function () use ( $presenter ) {
