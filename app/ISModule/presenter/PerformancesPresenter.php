@@ -25,21 +25,26 @@ class PerformancesPresenter extends SecuredPresenter {
 	 */
 	private $gridDataSource;
 
-	public function createComponentSimpleGrid( $name ) {
+	public function createComponentMyPerformancesGrid( $name ) {
+		$grid = $this->makeGrid( $name );
+		$grid->setTemplateFile( __DIR__ . '/templates/Performances/my-grid-detail.latte' );
+
+		return $grid;
+	}
+
+	/**
+	 * @param $name
+	 *
+	 * @return DataGrid
+	 */
+	private function makeGrid( $name ) {
 		$grid = new DataGrid( $this, $name );
 
-
-		$this->gridDataSource = $this->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
-		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
-		$presenter            = $this;
 		$source = $this->gridDataSource;
-		$grid->setPrimaryKey( "Predstaveni.ID" );
+		$grid->setPrimaryKey( "ID" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
-		$grid->setItemsDetail( function () use ( $presenter ) {
-			$presenter->gridDataSource = $presenter->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
-		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
-		} ); // Or just $grid->setItemsDetail();
+
 		$grid->setItemsDetail( function () {
 			return 'Lorem Ipsum';
 		} );
@@ -53,10 +58,13 @@ class PerformancesPresenter extends SecuredPresenter {
 		     ->setClass( 'btn btn-xs btn-danger ajax' )
 		     ->setConfirm( 'Do you really want to delete performance \'%s\'?', 'nazev' );
 
-		$grid->setItemsDetail();
+		$grid->setItemsDetail( true, "Predstaveni.ID" );
+
+		return $grid;
 	}
 
-	public function renderMy() {
+	public function actionMy() {
+
 		$this->gridDataSource = $this->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
 		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
 	}
