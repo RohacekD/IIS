@@ -6,3 +6,5 @@ productions:
 	name: "Název představení"
 	scene: "Scene"
 	director: "Režisér"
+	author: "Autor"
+	timeDifficulty: "Časovná náročnost"

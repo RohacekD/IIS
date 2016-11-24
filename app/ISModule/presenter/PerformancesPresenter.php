@@ -9,7 +9,6 @@
 namespace App\ISModule\Presenters;
 
 
-use Tracy\Debugger;
 use Ublaboo\DataGrid\DataGrid;
 use Nette;
 
@@ -45,13 +44,10 @@ class PerformancesPresenter extends SecuredPresenter {
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
 
-		$grid->setItemsDetail( function () {
-			return 'Lorem Ipsum';
-		} );
-		$grid->addColumnText( 'nazev', 'tables.productions.name' );
-		$grid->addColumnText( 'scena', 'tables.productions.scene' );
-		$grid->addColumnText( 'login_Reziser', 'tables.productions.director' );
-		$grid->addColumnDateTime( 'Datum', 'tables.productions.date' );
+		$grid->addColumnText( 'nazev', 'tables.performances.name' );
+		$grid->addColumnText( 'scena', 'tables.performances.scene' );
+		$grid->addColumnText( 'login_Reziser', 'tables.performances.director' );
+		$grid->addColumnDateTime( 'Datum', 'tables.performances.date' );
 		$grid->addAction( "delete", "", "delete!" )
 		     ->setIcon( 'trash' )
 		     ->setTitle( 'Delete' )
@@ -64,12 +60,13 @@ class PerformancesPresenter extends SecuredPresenter {
 	}
 
 	public function actionMy() {
-
+		//todo jen ta kde hraji
 		$this->gridDataSource = $this->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
 		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
 	}
 
 	public function handleDelete( $id ) {
-		Debugger::dump( $id );
+		//Debugger::dump( $id );
+		//TODO
 	}
 }
