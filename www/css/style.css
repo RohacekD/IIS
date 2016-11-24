@@ -60,6 +60,19 @@
 .performance-group .performance-control-content {
   background-color: #caf896;
   border-radius: 4px;
+  padding: 0 5px;
+}
+
+.performance-group .image-wrapper {
+  position: relative;
+}
+
+.performance-group .image-wrapper img {
+  margin: 0 15%;
+}
+
+.performance-group .performance-control-content img {
+  width: 70%;
 }
 
 /*
@@ -294,15 +307,6 @@ html, body {
   background-repeat: no-repeat;
   background-position: 98%;
   background-size: 40px;
-}
-
-.performance-control {
-  margin: 10px;
-}
-
-.performance-control img {
-  width: 100px;
-  height: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

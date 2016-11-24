@@ -1,8 +1,14 @@
-<div class="performance-control col-sm-4 col-md-3 col-lg-2 well">
-	<div class="performance-control-content">
-		<h3>{$performance->nazev}</h3>
-		<img class="img-rounded" src="{$basePath}/images/store/hamlet.jpg" alt="{$performance->nazev}">
-		<p n:inner-foreach="$roles as $role">{$role->nazev} {sep}, {/sep} </p>
-		<time>{$performance->Datum|date:"%d. %m. %Y"}{$performance->Datum|date:"%H:%M:%S"}</time>
-	</div>
+<div class="performance-control col-sm-4 col-md-3 col-lg-2">
+    <div class="well">
+        <div class="performance-control-content">
+            <h3>{$performance->nazev}</h3>
+            <div class="image-wrapper">
+                <img class="img-rounded" src="{$basePath}/images/store/hamlet.jpg" alt="{$performance->nazev}">
+            </div>
+
+            <p n:inner-foreach="$roles as $role">{$role->nazev} {sep}, {/sep} </p>
+            <time>{$performance->Datum|date:"%d. %m. %Y"}{$performance->Datum|date:"%H:%M:%S"}</time>
+        </div>
+    </div>
+
 </div>
