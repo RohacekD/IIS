@@ -30,11 +30,10 @@ class FormFactory
 
 		$renderer                                        = $form->getRenderer();
 		$renderer->wrappers['controls']['container']     = null;
-		$renderer->wrappers['pair']['container']         = 'div class=control-group';
 		$renderer->wrappers['pair']['.error']            = 'error';
 		$renderer->wrappers['control']['container']      = 'div class=controls';
-		$renderer->wrappers['label']['container']        = 'div class=control-label';
-		$renderer->wrappers['control']['description']    = 'span class=help-inline';
+
+        $renderer->wrappers['control']['description']    = 'span class=help-inline';
 		$renderer->wrappers['control']['errorcontainer'] = 'span class=help-inline';
 		$form->setTranslator($this->translator);
 		return $form;

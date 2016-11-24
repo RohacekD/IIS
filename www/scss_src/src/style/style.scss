@@ -7,6 +7,7 @@
 html, body {
   margin: 0;
   height: 100%;
+  overflow: auto;
 }
 
 #sign-in-page {
@@ -28,6 +29,8 @@ html, body {
   -webkit-box-shadow: 0 5px 9px rgba(39, 42, 44, .5);
   -moz-box-shadow: 0 5px 9px rgba(39, 42, 44, .5);
   box-shadow: 0 5px 9px rgba(39, 42, 44, .5);
+  position: fixed;
+  width: 100%;
 }
 
 #top-navbar img {
@@ -47,7 +50,7 @@ html, body {
 }
 
 .sidebar-nav li a {
-  color: #B2D1EB;
+  color: #CCC;
   font-size: 1.1em;
 }
 
@@ -85,4 +88,13 @@ html, body {
   background-position: 98%;
   background-size: 40px;
 
+}
+
+.performance-control {
+  margin: 10px;
+}
+
+.performance-control img {
+  width: 100px;
+  height: 100px;
 }

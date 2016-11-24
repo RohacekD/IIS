@@ -4,3 +4,35 @@ body#sign-in-page {
   background-size: cover;
 }
 
+#sign-in-page .col-login {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: rgba(10, 10, 10, 0.8);
+  border: 1px white solid;
+  border-radius: 4px;
+
+}
+
+#sign-in-page .login-wrapper {
+  padding-top: 15%;
+}
+
+#sign-in-page h2 {
+  margin: 0;
+
+}
+
+#sign-in-page .logo {
+  width: 100%;
+
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}

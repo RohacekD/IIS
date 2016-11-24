@@ -57,9 +57,9 @@
     display: table;
     clear: both;
 }
-
 .performance-group .performance-control-content {
-    background-color: olive;
+    background-color: #caf896;
+    border-radius: 4px;
 }
 
 /*
@@ -185,9 +185,41 @@ body#sign-in-page {
   background-repeat: no-repeat;
   background-size: cover; }
 
+#sign-in-page .col-login {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: rgba(10, 10, 10, 0.8);
+    border: 1px white solid;
+    border-radius: 4px;
+}
+
+#sign-in-page .login-wrapper {
+    padding-top: 15%;
+}
+
+#sign-in-page h2 {
+    margin: 0;
+}
+
+#sign-in-page .logo {
+    width: 100%;
+}
+
+/* Change the white to any color ;) */
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
+select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+}
+
 html, body {
   margin: 0;
-  height: 100%; }
+    height: 100%;
+    overflow: auto;
+}
 
 #sign-in-page {
     color: white;
@@ -208,6 +240,8 @@ html, body {
     -webkit-box-shadow: 0 5px 9px rgba(39, 42, 44, 0.5);
     -moz-box-shadow: 0 5px 9px rgba(39, 42, 44, 0.5);
     box-shadow: 0 5px 9px rgba(39, 42, 44, 0.5);
+    position: fixed;
+    width: 100%;
 }
 
 #top-navbar img {
@@ -226,7 +260,7 @@ html, body {
 }
 
 .sidebar-nav li a {
-  color: #B2D1EB;
+    color: #CCC;
     font-size: 1.1em;
 }
 
@@ -260,6 +294,15 @@ html, body {
   background-repeat: no-repeat;
   background-position: 98%;
     background-size: 40px;
+}
+
+.performance-control {
+    margin: 10px;
+}
+
+.performance-control img {
+    width: 100px;
+    height: 100px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -38,17 +38,20 @@ class SignInFormFactory
 	{
 		$form = $this->factory->create();
         $form->elementPrototype->addAttributes(array('class' => 'form-signin'));
-		$form->addText('username', 'forms.login.username')
+        $form->addText('username')
             ->setRequired('forms.login.usernameHint')
-            ->setAttribute('class', 'form-control');
+            ->setAttribute('class', 'form-control')
+            ->setAttribute('placeholder', 'forms.login.username');
 
-		$form->addPassword('password', 'forms.login.password')
+        $form->addPassword('password')
             ->setRequired('forms.login.passwordHint')
-            ->setAttribute('class', 'form-control');
+            ->setAttribute('class', 'form-control')
+            ->setAttribute('placeholder', 'forms.login.password');
 
 		$form->addCheckbox('remember', 'forms.login.keepLogIn');
 
-		$form->addSubmit('send', 'forms.login.signIn');
+        $form->addSubmit('send', 'forms.login.signIn')
+            ->setAttribute('class', 'btn btn-lg btn-primary btn-block');
 
 		$form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
 			try {

@@ -1,8 +1,8 @@
 login:
 	title: Přihlášení
-	username: "Přihlašovací jméno:"
+	username: "Login"
 	usernameHint: "Prosím zadejte přihlašovací jméno."
-	password: "Heslo:"
+	password: "Heslo"
 	passwordHint: "Prosím zadejte heslo."
 	keepLogIn: Zůstat přihlášen
 	signIn: Přihlásit
