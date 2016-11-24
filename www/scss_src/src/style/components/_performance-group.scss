@@ -4,7 +4,6 @@
   @include clearfix();
 
   .performance-control-content {
-    background-color: #caf896;
     border-radius: 4px;
     padding: 0 5px;
 
@@ -14,5 +13,19 @@
     position: relative;
     margin: 0 15%;
     width: 70%;
+  }
+
+  .well {
+    min-width: 70px;
+    padding: 10px;
+    h3 {
+      font-size: 15px;
+      border-bottom: solid 1px gray;
+    }
+    p {
+      padding: 0;
+    }
+
+
   }
 }
