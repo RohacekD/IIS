@@ -55,18 +55,39 @@
 .performance-group:after {
   content: "";
   display: table;
-	clear: both;
-}
+  clear: both; }
 .performance-group .performance-control-content {
   background-color: #caf896;
   border-radius: 4px;
-	padding: 0 5px;
-}
+  padding: 0 5px; }
 .performance-group .image-wrapper {
   position: relative;
   margin: 0 15%;
-	width: 70%;
-}
+  width: 70%; }
+
+.sidebar-nav li {
+  display: block;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #222222;
+  background-color: #555555;
+  line-height: 50px;
+  vertical-align: middle; }
+  .sidebar-nav li a {
+    color: #CCC;
+    font-size: 1.1em; }
+  .sidebar-nav li.performance, .sidebar-nav li.role, .sidebar-nav li.rehearsals, .sidebar-nav li.production {
+    background-repeat: no-repeat;
+    background-position: 98%;
+    background-size: 40px; }
+  .sidebar-nav li.performance {
+    background-image: url("../images/icons/performance.png"); }
+  .sidebar-nav li.role {
+    background-image: url("../images/icons/role.png"); }
+  .sidebar-nav li.rehearsals {
+    background-image: url("../images/icons/rehearsals.png"); }
+  .sidebar-nav li.production {
+    background-image: url("../images/icons/production.png"); }
 
 /*
  * @file base.scss
@@ -130,8 +151,7 @@
 .image-container {
   position: relative;
   height: 0;
-	overflow: hidden;
-}
+  overflow: hidden; }
 
 .ratio-16-9 {
   padding-bottom: 56.25%;
@@ -189,57 +209,36 @@
 body#sign-in-page {
   background-image: url("../images/sydney-363244_1280.jpg");
   background-repeat: no-repeat;
-  background-size: cover; }
-
-#sign-in-page .col-login {
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 50px;
-  background-color: rgba(10, 10, 10, 0.8);
-  border: 1px white solid;
-	border-radius: 4px;
-}
-
-#sign-in-page .login-wrapper {
-	padding-top: 15%;
-}
-
-#sign-in-page h2 {
-	margin: 0;
-}
-
-#sign-in-page .logo {
-	width: 100%;
-}
+  background-size: cover;
+  color: white; }
+  body#sign-in-page .col-login {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: rgba(10, 10, 10, 0.8);
+    border: 1px white solid;
+    border-radius: 4px; }
+  body#sign-in-page .login-wrapper {
+    padding-top: 15%; }
+  body#sign-in-page h2 {
+    margin: 0; }
+  body#sign-in-page .logo {
+    width: 100%; }
+  body#sign-in-page .form-container {
+    background-color: rgba(255, 255, 255, 0.3);
+    overflow: auto; }
 
 /* Change the white to any color ;) */
 input:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0px 1000px white inset;
-}
+  -webkit-box-shadow: 0 0 0px 1000px white inset; }
 
 select:-webkit-autofill {
-	-webkit-box-shadow: 0 0 0px 1000px white inset;
-}
+  -webkit-box-shadow: 0 0 0px 1000px white inset; }
 
 html, body {
   margin: 0;
   height: 100%;
-	overflow: auto;
-}
-
-#sign-in-page {
-	color: white;
-}
-
-#sign-in-page .form-container {
-  background-color: rgba(255, 255, 255, 0.3);
-	overflow: auto;
-}
-
-#sign-in-page .form-container {
-  background-color: rgba(255, 255, 255, 0.3);
-	overflow: auto;
-}
+  overflow: auto; }
 
 #top-navbar {
   margin-bottom: 0px;
@@ -247,59 +246,10 @@ html, body {
   -moz-box-shadow: 0 5px 9px rgba(39, 42, 44, 0.5);
   box-shadow: 0 5px 9px rgba(39, 42, 44, 0.5);
   position: fixed;
-	width: 100%;
-}
+  width: 100%; }
 
 #top-navbar img {
   height: 50px;
-	padding: 5px;
-}
-
-.sidebar-nav li {
-  display: block;
-  width: 100%;
-  height: 50px;
-  border: 1px solid #222222;
-  background-color: #555555;
-  line-height: 50px;
-	vertical-align: middle;
-}
-
-.sidebar-nav li a {
-  color: #CCC;
-	font-size: 1.1em;
-}
-
-.sidebar-nav li :hover {
-	background-color: #555555;
-}
-
-.sidebar-nav li.performance {
-  background-image: url("../images/icons/performance.png");
-  background-repeat: no-repeat;
-  background-position: 98%;
-	background-size: 40px;
-}
-
-.sidebar-nav li.role {
-  background-image: url("../images/icons/role.png");
-  background-repeat: no-repeat;
-  background-position: 98%;
-	background-size: 40px;
-}
-
-.sidebar-nav li.rehearsals {
-  background-image: url("../images/icons/rehearsals.png");
-  background-repeat: no-repeat;
-  background-position: 98%;
-	background-size: 40px;
-}
-
-.sidebar-nav li.production {
-  background-image: url("../images/icons/production.png");
-  background-repeat: no-repeat;
-  background-position: 98%;
-	background-size: 40px;
-}
+  padding: 5px; }
 
 /*# sourceMappingURL=style.css.map */

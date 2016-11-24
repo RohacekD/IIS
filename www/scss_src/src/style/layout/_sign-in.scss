@@ -2,30 +2,28 @@ body#sign-in-page {
   background-image: url("../images/sydney-363244_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-#sign-in-page .col-login {
-  max-width: 300px;
-  margin: 0 auto;
-  padding: 50px;
-  background-color: rgba(10, 10, 10, 0.8);
-  border: 1px white solid;
-  border-radius: 4px;
-
-}
-
-#sign-in-page .login-wrapper {
-  padding-top: 15%;
-}
-
-#sign-in-page h2 {
-  margin: 0;
-
-}
-
-#sign-in-page .logo {
-  width: 100%;
-
+  color: white;
+  .col-login {
+	max-width: 300px;
+	margin: 0 auto;
+	padding: 50px;
+	background-color: rgba(10, 10, 10, 0.8);
+	border: 1px white solid;
+	border-radius: 4px;
+  }
+  .login-wrapper {
+	padding-top: 15%;
+  }
+  h2 {
+	margin: 0;
+  }
+  .logo {
+	width: 100%;
+  }
+  .form-container {
+	background-color: rgba(255, 255, 255, 0.3);
+	overflow: auto;
+  }
 }
 
 /* Change the white to any color ;) */
