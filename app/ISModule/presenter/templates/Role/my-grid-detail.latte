@@ -1,0 +1,11 @@
+{extends $original_template}
+
+{block detail}
+	<h2>{$item->nazev}</h2>
+	<b>{_ main.timeDifficulty}: </b>{$item->casova_narocnost|date:"%h:%i"}
+	<b>{_ main.difficulty}: </b>{$item->obtiznost}
+	<h3>Popis</h3>
+	<p>{$item->popis}</p>
+
+	<span class="btn btn-default btn-sm">{_ main.edit}</span>
+{/block}
