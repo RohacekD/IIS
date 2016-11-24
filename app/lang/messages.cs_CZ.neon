@@ -1,2 +1,3 @@
 Delete: Smazat
-Do you really want to delete example %s?: Opravdu chcete smazat příklad %s?
+Do you really want to delete example '%s'?: Opravdu chcete smazat příklad %s?
+Do you really want to delete performance '%s'?: Opravdu chcete smazat představení '%s'?

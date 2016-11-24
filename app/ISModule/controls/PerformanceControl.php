@@ -10,7 +10,6 @@ namespace App\ISModule\Controls;
 
 use Nette\Application\UI\Control,
 	Nette;
-use Tracy\Debugger;
 
 /**
  * Class PerformanceControl
@@ -55,9 +54,8 @@ class PerformanceControl extends Control {
 		$this->id = $id;
 		$this->template->setFile( __DIR__ . "/../presenter/templates/components/Performance.latte" );
 		$this->template->performance = $this->getPerformance();
-		$this->template->production  = $this->getProduction( $this->template->performance->ID );
-		$this->template->play        = $this->getPlay( $this->template->production->ID_Divadelni_hra );
-		$this->template->roles       = $this->getRoles( $this->template->production->ID );
+		$this->template->play        = $this->getPlay( $this->template->performance->ID_Divadelni_hra );
+		$this->template->roles       = $this->getRoles( $this->template->performance->ID_Inscenace );
 		$this->template->render();
 	}
 
@@ -65,16 +63,12 @@ class PerformanceControl extends Control {
 	 * @return bool|mixed|Nette\Database\Table\IRow
 	 */
 	private function getPerformance() {
-		return $this->database->table( self::PERFORMANCE_TABLE )->where( "ID", $this->id )->fetch();
-	}
-
-	/**
-	 * @param $id
-	 *
-	 * @return bool|mixed|Nette\Database\Table\IRow
-	 */
-	private function getProduction( $id ) {
-		return $this->database->table( self::PRODUCTION_TABLE )->where( "ID", $id )->fetch();
+		return $this->database->table( self::PERFORMANCE_TABLE )
+		                      ->where( self::PERFORMANCE_TABLE . ".ID", $this->id )
+		                      ->select( self::PERFORMANCE_TABLE . ".ID, " . self::PERFORMANCE_TABLE . ".Datum, "
+		                                . self::PRODUCTION_TABLE . ".nazev, " . self::PRODUCTION_TABLE . ".ID_Divadelni_hra, "
+		                                . self::PRODUCTION_TABLE . ".ID AS ID_Inscenace" )
+		                      ->fetch();
 	}
 
 	/**
@@ -92,16 +86,26 @@ class PerformanceControl extends Control {
 	 * @return array|Nette\Database\Table\IRow[]|Nette\Database\Table\Selection
 	 */
 	private function getRoles( $productionId ) {
-		$actorsRoles = $this->database->table( self::ACTOR_ROLES_TABLE )->where( "LOGIN_HEREC", $this->user->getId() )->select( "ID_Role" )->fetchAll();
-		$roles       = array();
-		foreach ( $actorsRoles as $role ) {
-			$roles[] = $role->ID_Role;
-		}
-		$rolesNames = $this->database->table( self::ROLE_TABLE )->where( [
-			"ID"           => $roles,
-			"ID_inscenace" => $productionId
-		] )->fetchAll();
+		$rolesNames = $this->database
+			->query( "SELECT ID, `nazev` 
+					FROM `" . self::ROLE_TABLE . "` 
+					WHERE (ID IN (SELECT `ID_Role` 
+					FROM `" . self::ACTOR_ROLES_TABLE . "`
+					WHERE (LOGIN_HEREC = '" . $this->user->getId() . "'))) 
+					AND (`ID_inscenace` = " . $productionId . ")" )
+			->fetchAll();
 
 		return $rolesNames;
+	}
+
+	/**
+	 * @param $id
+	 *
+	 * @return bool|mixed|Nette\Database\Table\IRow
+	 */
+	private function getProduction( $id ) {
+		return $this->database->table( self::PRODUCTION_TABLE )
+		                      ->where( "ID", $id )
+		                      ->fetch();
 	}
 }

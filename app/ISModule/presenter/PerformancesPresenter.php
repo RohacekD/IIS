@@ -28,10 +28,21 @@ class PerformancesPresenter extends SecuredPresenter {
 	public function createComponentSimpleGrid( $name ) {
 		$grid = new DataGrid( $this, $name );
 
+
+		$this->gridDataSource = $this->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
+		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
+		$presenter            = $this;
 		$source = $this->gridDataSource;
 		$grid->setPrimaryKey( "ID" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
+		$grid->setItemsDetail( function () use ( $presenter ) {
+			$presenter->gridDataSource = $presenter->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
+		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
+		} ); // Or just $grid->setItemsDetail();
+		$grid->setItemsDetail( function () {
+			return 'Lorem Ipsum';
+		} );
 		$grid->addColumnText( 'nazev', 'tables.productions.name' );
 		$grid->addColumnText( 'scena', 'tables.productions.scene' );
 		$grid->addColumnText( 'login_Reziser', 'tables.productions.director' );
@@ -40,7 +51,7 @@ class PerformancesPresenter extends SecuredPresenter {
 		     ->setIcon( 'trash' )
 		     ->setTitle( 'Delete' )
 		     ->setClass( 'btn btn-xs btn-danger ajax' )
-		     ->setConfirm( 'Do you really want to delete example %s?', 'Datum' );
+		     ->setConfirm( 'Do you really want to delete performance \'%s\'?', 'nazev' );
 
 		$grid->setItemsDetail();
 	}
