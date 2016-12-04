@@ -21,7 +21,14 @@ class HomepagePresenter extends SecuredPresenter
 
 	public function renderDefault()
 	{
-
+		$this->template->upcomingPerformances =
+			$this->database->query( "
+				SELECT `Predstaveni`.`ID` 
+				FROM `Predstaveni` 
+				LEFT JOIN `Inscenace` ON `Predstaveni`.`ID_Inscenace` = `Inscenace`.ID 
+				LEFT JOIN `Predstaveni_Herec` ON `Predstaveni`.`ID` = `Predstaveni_Herec`.`ID_Predstaveni`
+				WHERE (`Predstaveni_Herec`.`login_Herec` = 'Irimitenkan') 
+				ORDER BY `Predstaveni`.`Datum` 
+				LIMIT 4" )->fetchAll();
 	}
-
 }

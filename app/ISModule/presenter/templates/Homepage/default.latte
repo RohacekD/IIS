@@ -1,10 +1,10 @@
 {block content}
-	<div class="performance-group container-fluid">
+	<div n:if="$upcomingPerformances" class="performance-group container-fluid">
 		<h2>{_main.upcommingPerformance}</h2>
-		{control performance 1}
-		{control performance 2}
-		{control performance 3}
-		{control performance 4}
+		{dump $upcomingPerformances}
+		{foreach $upcomingPerformances as $upcomingPerformance}
+			{control performance $upcomingPerformance->ID}
+		{/foreach}
 
 	</div>
 	<div class="rehearsal-group container-fluid">
