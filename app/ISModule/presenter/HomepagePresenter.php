@@ -14,6 +14,10 @@ class HomepagePresenter extends SecuredPresenter
 		return new Controls\PerformanceControl( $this->getUser()->getIdentity(), $this->database );
 	}
 
+	public function createComponentRehearsal() {
+		return new Controls\RehearsalControl( $this->getUser()->getIdentity(), $this->database );
+	}
+
 
 	public function renderDefault()
 	{
