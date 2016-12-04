@@ -1,0 +1,12 @@
+table.table {
+  tbody {
+	tr.row-item-detail {
+	  &.loaded {
+		td {
+		  padding: 0;
+		  border: 0;
+		}
+	  }
+	}
+  }
+}

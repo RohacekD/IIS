@@ -9,7 +9,6 @@
 namespace App\ISModule\Presenters;
 
 
-use Tracy\Debugger;
 use Ublaboo\DataGrid\DataGrid;
 use Nette;
 
@@ -25,43 +24,49 @@ class PerformancesPresenter extends SecuredPresenter {
 	 */
 	private $gridDataSource;
 
-	public function createComponentSimpleGrid( $name ) {
+	public function createComponentMyPerformancesGrid( $name ) {
+		$grid = $this->makeGrid( $name );
+		$grid->setTemplateFile( __DIR__ . '/templates/Performances/my-grid-detail.latte' );
+
+		return $grid;
+	}
+
+	/**
+	 * @param $name
+	 *
+	 * @return DataGrid
+	 */
+	private function makeGrid( $name ) {
 		$grid = new DataGrid( $this, $name );
 
-
-		$this->gridDataSource = $this->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
-		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
-		$presenter            = $this;
 		$source = $this->gridDataSource;
-		$grid->setPrimaryKey( "Predstaveni.ID" );
+		$grid->setPrimaryKey( "ID" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
-		$grid->setItemsDetail( function () use ( $presenter ) {
-			$presenter->gridDataSource = $presenter->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
-		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
-		} ); // Or just $grid->setItemsDetail();
-		$grid->setItemsDetail( function () {
-			return 'Lorem Ipsum';
-		} );
-		$grid->addColumnText( 'nazev', 'tables.productions.name' );
-		$grid->addColumnText( 'scena', 'tables.productions.scene' );
-		$grid->addColumnText( 'login_Reziser', 'tables.productions.director' );
-		$grid->addColumnDateTime( 'Datum', 'tables.productions.date' );
+
+		$grid->addColumnText( 'nazev', 'tables.performances.name' );
+		$grid->addColumnText( 'scena', 'tables.performances.scene' );
+		$grid->addColumnText( 'login_Reziser', 'tables.performances.director' );
+		$grid->addColumnDateTime( 'Datum', 'tables.performances.date' );
 		$grid->addAction( "delete", "", "delete!" )
 		     ->setIcon( 'trash' )
 		     ->setTitle( 'Delete' )
 		     ->setClass( 'btn btn-xs btn-danger ajax' )
 		     ->setConfirm( 'Do you really want to delete performance \'%s\'?', 'nazev' );
 
-		$grid->setItemsDetail();
+		$grid->setItemsDetail( true, "Predstaveni.ID" );
+
+		return $grid;
 	}
 
-	public function renderMy() {
+	public function actionMy() {
+		//todo jen ta kde hraji
 		$this->gridDataSource = $this->database->table( "Predstaveni" )->select( "Predstaveni.ID, Datum, 
 		Inscenace.nazev, Inscenace.scena, Inscenace.login_Reziser" );
 	}
 
 	public function handleDelete( $id ) {
-		Debugger::dump( $id );
+		//Debugger::dump( $id );
+		//TODO
 	}
 }

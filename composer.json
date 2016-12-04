@@ -37,7 +37,8 @@
 	"tracy/tracy": "^2.4",
 	"dg/adminer-custom": "^1.6",
     "kdyby/translation": "@dev",
-    "ublaboo/datagrid": "^4.4"
+	"ublaboo/datagrid": "^4.4",
+	"jzechy/jquery-fileupload": "^1.2"
   },
   "require-dev": {
 	"nette/tester": "dev-feature/teamcity-output"
