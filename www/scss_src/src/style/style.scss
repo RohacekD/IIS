@@ -17,10 +17,41 @@ html, body {
   box-shadow: 0 5px 9px rgba(39, 42, 44, .5);
   position: fixed;
   width: 100%;
+  .logo-wrapper {
+    margin-top: 5px;
+    height: 40px;
+    width: 250px;
+    position: absolute;
+    border-right: 1px solid gray;
+  }
+
 }
+
 
 #top-navbar img {
-  height: 50px;
-  padding: 5px;
+  height: 40px;
+  position: relative;
 }
 
+#menu-toggle {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  width: 50px;
+}
+
+.headline {
+  color: white;
+  position: absolute;
+  left: 260px;
+  font-style: italic;
+
+  h1 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 10px;
+    line-height: 50px;
+    vertical-align: middle;
+  }
+
+}
