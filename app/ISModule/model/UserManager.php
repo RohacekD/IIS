@@ -74,6 +74,18 @@ class UserManager implements Nette\Security\IAuthenticator {
 		return new Nette\Security\Identity( $id, $role, $arr );
 	}
 
+	private function tableToRole( $table ) {
+		$tables = array(
+			"Herec"       => "actor",
+			"Reziser"     => "director",
+			"Organizator" => "organizer"
+		);
+		if ( ! array_key_exists( $table, $tables ) ) {
+			throw new BadTableNameException;
+		}
+
+		return $tables[ $table ];
+	}
 
 	/**
 	 * @param $username
@@ -132,18 +144,6 @@ class UserManager implements Nette\Security\IAuthenticator {
 		return $tables[$role];
 	}
 
-	private function tableToRole( $table ) {
-		$tables = array(
-			"Herec" => "actor",
-			"Reziser" => "director",
-			"Organizator" => "organizer"
-		);
-		if(!array_key_exists($table, $tables)){
-			throw new BadTableNameException;
-		}
-		return $tables[$table];
-	}
-
 }
 
 
@@ -154,7 +154,7 @@ class DuplicateNameException extends \Exception {
 }
 
 class BadTableNameException extends \Exception {
-	public function __construct( $message = "Table with that users does't exists!" ) {
+	public function __construct( $message = "Table with that users doesn't exists!" ) {
 		parent::__construct( $message, 5, null );
 	}
 }

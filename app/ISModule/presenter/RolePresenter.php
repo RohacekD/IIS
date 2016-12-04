@@ -58,13 +58,13 @@ class RolePresenter extends SecuredPresenter {
 	public function actionMy() {
 		$this->gridDataSource = $this->
 		database->table( self::ROLES_ACTOR_TABLE )
-		        ->joinWhere( self::PRODUCTION_TABLE, self::ROLES_TABLE . ".ID_inscenace = " . self::PRODUCTION_TABLE . ".ID" )
+			//->joinWhere( self::PRODUCTION_TABLE, self::ROLES_TABLE . ".ID_inscenace = " . self::PRODUCTION_TABLE . ".ID" )
 		        ->select( self::ROLES_TABLE . ".ID,"
 		                  . self::ROLES_TABLE . ".nazev, "
 		                  . self::ROLES_TABLE . ".obtiznost, "
 		                  . self::ROLES_TABLE . ".casova_narocnost, "
 		                  . self::ROLES_TABLE . ".popis,"
-		                  . self::PRODUCTION_TABLE . ".nazev" )
+			/* . self::PRODUCTION_TABLE . ".nazev" */ )
 		        ->where( self::ROLES_ACTOR_TABLE . ".login_Herec ", $this->getUser()->getId() );
 	}
 
