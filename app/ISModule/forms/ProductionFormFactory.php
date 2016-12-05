@@ -49,7 +49,9 @@ class ProductionFormFactory
                 'organizer' => 'hra 3'
             ])
             ->setRequired('forms.user.roleHint')
-            ->setAttribute('class', 'form-control');
+            ->setAttribute('data-live-search', 'true')
+            ->setAttribute('class', 'form-control selectpicker');
+
         $form->addMultiSelect('options', 'Možnosti:', [
             'director' => 'herec 1',
             'actor' => 'herec  2',

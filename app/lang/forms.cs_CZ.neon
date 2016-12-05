@@ -17,6 +17,11 @@ user:
 	passwordHint: "Prosím zadejte heslo."
 	passwordAgain: "Heslo znovu"
 	passwordAgainHint: "Prosím zadejte znovu heslo."
+	city: "město"
+	street: "ulice"
+	houseNumber: "č. p."
+	phone: "telefon"
+	email: "mail"
 performance:
     title:
         add: "Přidat představení"

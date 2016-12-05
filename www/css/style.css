@@ -391,4 +391,8 @@ html, body {
     padding: 2px 12px;
 }
 
+.datagrid-per-page-submit {
+    display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
