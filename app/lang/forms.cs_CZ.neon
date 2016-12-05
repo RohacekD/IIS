@@ -25,3 +25,7 @@ production:
     title:
         add: "Přidat inscenaci"
         edit: "Upravit inscenaci"
+plays:
+    title:
+        add: "Přidat hru"
+        edit: "Editovat hru"
