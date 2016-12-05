@@ -67,16 +67,17 @@ class MenuControl extends Control
             );
         } elseif ($this->user->getRoles()[0] == "director") {
             $return = array(
-                'Plays:list' => ['name' => 'Hry', 'class' => 'plays'],
-                'Productions:list' => ['name' => 'Inscenace', 'productions' => ''],
-                'Rehearsals:list' => ['name' => 'Zkoušky', 'rehearsals' => '']
+	            'Plays:list'       => ['name' => 'Hry', 'class' => 'plays'],
+	            'Productions:list' => [ 'name' => 'Inscenace', 'class' => 'production' ],
+	            'Rehearsals:list'  => [ 'name' => 'Zkoušky', 'class' => 'rehearsals' ]
             );
         } elseif ($this->user->getRoles()[0] == "organizer") {
             $return = array(
-                'Performanes:list' => ['name' => 'Představení', 'class' => 'performance'],
-                'Productions:list' => ['name' => 'Inscenace', 'class' => 'productions'],
-                'Plays:list' => ['name' => 'Hry', 'class' => 'plays'],
-                'Rehearsals:list' => ['name' => 'Zkoušky', 'rehearsals' => '']
+	            'Performances:list' => [ 'name' => 'Představení', 'class' => 'performance' ],
+	            'Productions:list'  => [ 'name' => 'Inscenace', 'class' => 'production' ],
+	            'Plays:list'        => ['name' => 'Hry', 'class' => 'plays'],
+	            'Rehearsals:list'   => [ 'name' => 'Zkoušky', 'class' => 'rehearsals' ],
+	            'Users:list'        => [ 'name' => 'Uživatelé', 'class' => 'user' ],
             );
         }
 

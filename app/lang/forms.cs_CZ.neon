@@ -7,3 +7,13 @@ login:
 	keepLogIn: Zůstat přihlášen
 	signIn: Přihlásit
 	error: "Přihlašovací jméno a heslo nesouhlasí."
+user:
+	title:
+		add: "Přidat uživatele"
+		edit: "Editovat uživatele"
+	username: "Login"
+	usernameHint: "Prosím zadejte přihlašovací jméno."
+	password: "Heslo"
+	passwordHint: "Prosím zadejte heslo."
+	passwordAgain: "Heslo znovu"
+	passwordAgainHint: "Prosím zadejte znovu heslo."
