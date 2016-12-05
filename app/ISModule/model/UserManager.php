@@ -117,7 +117,10 @@ class UserManager implements Nette\Security\IAuthenticator {
 		} catch ( Nette\Database\UniqueConstraintViolationException $e ) {
 			throw new DuplicateNameException;
 		}
+
+		return $contact->getPrimary();
 	}
+
 
 	private function loginUnique( $username ) {
 		foreach ( self::TABLE_NAME as $table ) {
