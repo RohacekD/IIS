@@ -35,33 +35,38 @@ class PlayFormFactory
 
     /**
      * @param callable $onSuccess
+     * @param Model\Play $play
      *
      * @return Form
      */
-    public function create(callable $onSuccess)
+	public function create( callable $onSuccess, $play )
     {
         $form = $this->factory->create();
         $form->elementPrototype->addAttributes(array('class' => 'form-play'));
 
 
         $form->addText('name')
-            ->setRequired('Uveďte prosím název hry')
-            ->setAttribute('class', 'form-control')
-            ->setAttribute('placeholder', 'Název hry');
+             ->setRequired('Uveďte prosím název hry')
+             ->setAttribute('class', 'form-control')
+             ->setAttribute( 'placeholder', 'Název hry' )
+             ->setDefaultValue( $play->getName() );
 
         $form->addText('author')
-            ->setRequired('Uveďte prosím autora hry')
-            ->setAttribute('class', 'form-control')
-            ->setAttribute('placeholder', 'Autor');
+             ->setRequired('Uveďte prosím autora hry')
+             ->setAttribute('class', 'form-control')
+             ->setAttribute( 'placeholder', 'Autor' )
+             ->setDefaultValue( $play->getAuthor() );
         $form->addText('time', "Časová náročnost")
-            ->setAttribute("type", "time")
-            ->setRequired('forms.rehearsal.hintProduction')
-            ->setAttribute('class', 'form-control')
-            ->setAttribute('placeholder', 'časová náročnost');
+             ->setAttribute("type", "time")
+             ->setRequired('forms.rehearsal.hintProduction')
+             ->setAttribute('class', 'form-control')
+             ->setAttribute( 'placeholder', 'časová náročnost' )
+             ->setDefaultValue( $play->getTimeNeeded()->format( 'H:i' ) );
         $form->addTextArea('desription', null, null, 5)
-            ->setRequired('Uveďte prosím popis hry')
-            ->setAttribute('class', 'form-control')
-            ->setAttribute('placeholder', 'Popis');
+             ->setRequired('Uveďte prosím popis hry')
+             ->setAttribute('class', 'form-control')
+             ->setAttribute( 'placeholder', 'Popis' )
+             ->setDefaultValue( $play->getDescription() );
 
 
         $form->addSubmit('send', 'Vytvořit')
@@ -69,9 +74,6 @@ class PlayFormFactory
 
 
         $form->onSuccess[] = function (Form $form, $values) use ($onSuccess) {
-            if ($values->password != $values->passwordAgain) {
-                $form->addError('forms.user.errorPassword');
-            }
             $onSuccess($form, $values);
         };
 
