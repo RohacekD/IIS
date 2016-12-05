@@ -17,3 +17,11 @@ user:
 	passwordHint: "Prosím zadejte heslo."
 	passwordAgain: "Heslo znovu"
 	passwordAgainHint: "Prosím zadejte znovu heslo."
+performance:
+    title:
+        add: "Přidat představení"
+        edit: "Editovat předsavení"
+production:
+    title:
+        add: "Přidat inscenaci"
+        edit: "Upravit inscenaci"
