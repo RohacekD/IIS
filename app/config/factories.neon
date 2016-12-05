@@ -1,0 +1,7 @@
+services:
+	- App\ISModule\Forms\SignInFormFactory
+	- App\ISModule\Forms\UserFormFactory
+	- App\ISModule\Forms\RehearsalFormFactory
+	- App\ISModule\Forms\PlayFormFactory
+	- App\ISModule\Forms\PerformanceFormFactory
+	- App\ISModule\Forms\ProductionFormFactory

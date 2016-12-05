@@ -8,6 +8,8 @@
 
 namespace App\ISModule\Presenters;
 
+use App\ISModule\Forms;
+
 
 use Ublaboo\DataGrid\DataGrid;
 use Nette;
@@ -19,6 +21,16 @@ use Nette;
  * @brief Means "predstaveni"
  */
 class PerformancesPresenter extends SecuredPresenter {
+    /** @var Forms\RehearsalFormFactory @inject */
+    public $performanceFormFactory;
+
+    protected function createComponentAddPerformance()
+    {
+
+        return $this->performanceFormFactory->create(function () {
+
+        });
+    }
 	/**
 	 * @var @persistent Nette\Database\Table\Selection
 	 */

@@ -9,6 +9,7 @@
 namespace App\ISModule\Presenters;
 
 use Ublaboo\DataGrid\DataGrid;
+use App\ISModule\Forms;
 
 /**
  * Class ProductionsPresenter
@@ -17,6 +18,16 @@ use Ublaboo\DataGrid\DataGrid;
  */
 class ProductionsPresenter extends SecuredPresenter
 {
+    /** @var Forms\ProductionFormFactory @inject */
+    public $productionFormFactory;
+
+    protected function createComponentAddProduction()
+    {
+
+        return $this->productionFormFactory->create(function () {
+        });
+    }
+
 	const PRODUCTION_TABLE = "Inscenace";
 	const PLAYS_TABLE = "Divadelni_hra";
 	/**

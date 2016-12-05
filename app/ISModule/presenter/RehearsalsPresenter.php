@@ -9,16 +9,20 @@
 namespace App\ISModule\Presenters;
 
 use Ublaboo\DataGrid\DataGrid;
+use App\ISModule\Forms;
 /**
  * Class RehearsalsPresenter
  * @package App\ISModule\Presenters
  * @brief Means "zkousky"
  */
 class RehearsalsPresenter extends SecuredPresenter {
+    /** @var Forms\RehearsalFormFactory @inject */
+    public $rehearsalFormFactory;
 	/**
 	 * @var @persistent Nette\Database\Table\Selection
 	 */
 	private $gridDataSource;
+
 
 	public function createComponentMyPerformancesGrid( $name ) {
 		$grid = $this->makeGrid( $name );
@@ -71,4 +75,12 @@ class RehearsalsPresenter extends SecuredPresenter {
 		//Debugger::dump( $id );
 		//TODO
 	}
+
+    protected function createComponentAddRehearsal()
+    {
+
+        return $this->rehearsalFormFactory->create(function () {
+
+        });
+    }
 }

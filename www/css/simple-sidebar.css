@@ -49,6 +49,14 @@ body {
     padding: 15px;
 }
 
+#page-content-wrapper label {
+    display: none;
+}
+
+#page-content-wrapper .controls {
+    margin-bottom: 7px;
+}
+
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;

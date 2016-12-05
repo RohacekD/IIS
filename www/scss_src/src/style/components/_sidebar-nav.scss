@@ -15,7 +15,9 @@
   &.performance,
   &.role,
   &.rehearsals,
-  &.production {
+  &.production,
+  &.user,
+  &.play {
 	background-repeat: no-repeat;
 	background-position: 98%;
 	background-size: 40px;
@@ -32,5 +34,10 @@
   &.production {
 	background-image: url("../images/icons/production.png");
   }
-
+  &.play {
+    background-image: url("../images/icons/play.png");
+  }
+  &.user {
+    background-image: url("../images/icons/users.png");
+  }
 }

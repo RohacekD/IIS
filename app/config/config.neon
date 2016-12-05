@@ -17,12 +17,13 @@ application:
 session:
 	expiration: 14 days
 
+includes:
+    - factories.neon
+
 
 services:
 	- App\ISModule\Model\UserManager
 	- App\Forms\FormFactory
-	- App\ISModule\Forms\SignInFormFactory
-	- App\ISModule\Forms\UserFormFactory
 	router: App\RouterFactory::createRouter
 	cacheStorage:
 			class: Nette\Caching\Storages\DevNullStorage

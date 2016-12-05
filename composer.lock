@@ -4,6 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "b3ec6f7437541257de670fc52287e531",
     "content-hash": "1b6b3c850be7a64f000b35911634334a",
     "packages": [
         {
@@ -23,7 +24,7 @@
             "type": "project",
             "notification-url": "https://packagist.org/downloads/",
             "description": "Customization for the best database management tool written in PHP, Adminer",
-            "time": "2016-06-01T21:20:39+00:00"
+            "time": "2016-06-01 21:20:39"
         },
         {
             "name": "jzechy/jquery-fileupload",
@@ -68,7 +69,7 @@
             ],
             "description": "Nette UploadControl rozšířené o blueimp jQuery FileUpload.",
             "homepage": "https://github.com/JZechy/jQuery-FileUpload",
-            "time": "2016-10-29T15:10:37+00:00"
+            "time": "2016-10-29 15:10:37"
         },
         {
             "name": "kdyby/translation",
@@ -232,7 +233,7 @@
                 "templating",
                 "twig"
             ],
-            "time": "2016-09-27T13:10:19+00:00"
+            "time": "2016-09-27 13:10:19"
         },
         {
             "name": "nette/application",
@@ -306,7 +307,7 @@
             ],
             "description": "Nette Application MVC Component",
             "homepage": "https://nette.org",
-            "time": "2016-09-27T09:49:35+00:00"
+            "time": "2016-09-27 09:49:35"
         },
         {
             "name": "nette/bootstrap",
@@ -377,7 +378,7 @@
             ],
             "description": "Nette Bootstrap",
             "homepage": "https://nette.org",
-            "time": "2016-06-25T11:54:52+00:00"
+            "time": "2016-06-25 11:54:52"
         },
         {
             "name": "nette/caching",
@@ -439,7 +440,7 @@
             ],
             "description": "Nette Caching Component",
             "homepage": "https://nette.org",
-            "time": "2016-10-06T00:08:42+00:00"
+            "time": "2016-10-06 00:08:42"
         },
         {
             "name": "nette/component-model",
@@ -496,7 +497,7 @@
             ],
             "description": "Nette Component Model",
             "homepage": "https://nette.org",
-            "time": "2016-06-17T17:36:56+00:00"
+            "time": "2016-06-17 17:36:56"
         },
         {
             "name": "nette/database",
@@ -556,7 +557,7 @@
             ],
             "description": "Nette Database Component",
             "homepage": "https://nette.org",
-            "time": "2016-10-18T13:27:34+00:00"
+            "time": "2016-10-18 13:27:34"
         },
         {
             "name": "nette/di",
@@ -616,7 +617,7 @@
             ],
             "description": "Nette Dependency Injection Component",
             "homepage": "https://nette.org",
-            "time": "2016-09-21T16:51:11+00:00"
+            "time": "2016-09-21 16:51:11"
         },
         {
             "name": "nette/finder",
@@ -672,7 +673,7 @@
             ],
             "description": "Nette Finder: Files Searching",
             "homepage": "https://nette.org",
-            "time": "2016-05-17T15:49:06+00:00"
+            "time": "2016-05-17 15:49:06"
         },
         {
             "name": "nette/forms",
@@ -732,7 +733,7 @@
             ],
             "description": "Nette Forms: greatly facilitates web forms",
             "homepage": "https://nette.org",
-            "time": "2016-09-27T09:34:35+00:00"
+            "time": "2016-09-27 09:34:35"
         },
         {
             "name": "nette/http",
@@ -792,7 +793,7 @@
             ],
             "description": "Nette HTTP Component",
             "homepage": "https://nette.org",
-            "time": "2016-10-17T14:02:57+00:00"
+            "time": "2016-10-17 14:02:57"
         },
         {
             "name": "nette/mail",
@@ -853,7 +854,7 @@
             ],
             "description": "Nette Mail: Sending E-mails",
             "homepage": "https://nette.org",
-            "time": "2016-07-31T12:06:47+00:00"
+            "time": "2016-07-31 12:06:47"
         },
         {
             "name": "nette/neon",
@@ -906,7 +907,7 @@
             ],
             "description": "Nette NEON: parser & generator for Nette Object Notation",
             "homepage": "http://ne-on.org",
-            "time": "2016-06-25T13:59:48+00:00"
+            "time": "2016-06-25 13:59:48"
         },
         {
             "name": "nette/php-generator",
@@ -962,7 +963,7 @@
             ],
             "description": "Nette PHP Generator",
             "homepage": "https://nette.org",
-            "time": "2016-07-31T13:50:37+00:00"
+            "time": "2016-07-31 13:50:37"
         },
         {
             "name": "nette/reflection",
@@ -1021,7 +1022,7 @@
             ],
             "description": "Nette PHP Reflection Component",
             "homepage": "https://nette.org",
-            "time": "2016-05-17T15:49:34+00:00"
+            "time": "2016-05-17 15:49:34"
         },
         {
             "name": "nette/robot-loader",
@@ -1080,7 +1081,7 @@
             ],
             "description": "Nette RobotLoader: comfortable autoloading",
             "homepage": "https://nette.org",
-            "time": "2016-09-29T15:55:27+00:00"
+            "time": "2016-09-29 15:55:27"
         },
         {
             "name": "nette/safe-stream",
@@ -1135,7 +1136,7 @@
             ],
             "description": "Nette SafeStream: Atomic Operations",
             "homepage": "https://nette.org",
-            "time": "2016-03-19T13:06:04+00:00"
+            "time": "2016-03-19 13:06:04"
         },
         {
             "name": "nette/security",
@@ -1193,7 +1194,7 @@
             ],
             "description": "Nette Security: Access Control Component",
             "homepage": "https://nette.org",
-            "time": "2016-05-17T15:49:45+00:00"
+            "time": "2016-05-17 15:49:45"
         },
         {
             "name": "nette/utils",
@@ -1256,7 +1257,7 @@
             ],
             "description": "Nette Utility Classes",
             "homepage": "https://nette.org",
-            "time": "2016-09-28T17:57:14+00:00"
+            "time": "2016-09-28 17:57:14"
         },
         {
             "name": "paragonie/random_compat",
@@ -1304,7 +1305,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17T15:23:22+00:00"
+            "time": "2016-10-17 15:23:22"
         },
         {
             "name": "psr/log",
@@ -1351,7 +1352,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "symfony/config",
@@ -1404,7 +1405,7 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2016-09-14T20:31:12+00:00"
+            "time": "2016-09-14 20:31:12"
         },
         {
             "name": "symfony/filesystem",
@@ -1453,7 +1454,7 @@
             ],
             "description": "Symfony Filesystem Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-20T05:43:46+00:00"
+            "time": "2016-07-20 05:43:46"
         },
         {
             "name": "symfony/inflector",
@@ -1510,7 +1511,7 @@
                 "symfony",
                 "words"
             ],
-            "time": "2016-06-08T11:24:07+00:00"
+            "time": "2016-06-08 11:24:07"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1569,7 +1570,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18T14:26:46+00:00"
+            "time": "2016-05-18 14:26:46"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -1628,7 +1629,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18T14:26:46+00:00"
+            "time": "2016-05-18 14:26:46"
         },
         {
             "name": "symfony/property-access",
@@ -1690,7 +1691,7 @@
                 "property path",
                 "reflection"
             ],
-            "time": "2016-08-15T13:15:28+00:00"
+            "time": "2016-08-15 13:15:28"
         },
         {
             "name": "symfony/translation",
@@ -1754,7 +1755,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-10-18T04:28:30+00:00"
+            "time": "2016-10-18 04:28:30"
         },
         {
             "name": "tracy/tracy",
@@ -1816,7 +1817,7 @@
                 "debugger",
                 "nette"
             ],
-            "time": "2016-09-30T14:17:54+00:00"
+            "time": "2016-09-30 14:17:54"
         },
         {
             "name": "ublaboo/controls",
@@ -1864,7 +1865,7 @@
                 "extension",
                 "nette"
             ],
-            "time": "2016-07-02T14:54:04+00:00"
+            "time": "2016-07-02 14:54:04"
         },
         {
             "name": "ublaboo/datagrid",
@@ -1920,7 +1921,7 @@
                 "grid",
                 "nette"
             ],
-            "time": "2016-10-11T20:18:55+00:00"
+            "time": "2016-10-11 20:18:55"
         },
         {
             "name": "ublaboo/responses",
@@ -1968,7 +1969,7 @@
                 "nette",
                 "responses"
             ],
-            "time": "2016-08-10T12:47:50+00:00"
+            "time": "2016-08-10 12:47:50"
         }
     ],
     "packages-dev": [

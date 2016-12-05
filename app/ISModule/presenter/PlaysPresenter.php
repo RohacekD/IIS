@@ -8,8 +8,18 @@
 
 namespace App\ISModule\Presenters;
 
+use App\ISModule\Forms;
+
 
 class PlaysPresenter extends SecuredPresenter
 {
+    /** @var Forms\PlayFormFactory @inject */
+    public $playFormFactory;
 
+    protected function createComponentAddPlay()
+    {
+
+        return $this->playFormFactory->create(function () {
+        });
+    }
 }

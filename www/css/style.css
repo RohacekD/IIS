@@ -94,7 +94,7 @@
     font-size: 1.1em;
 }
 
-.sidebar-nav li.performance, .sidebar-nav li.role, .sidebar-nav li.rehearsals, .sidebar-nav li.production {
+.sidebar-nav li.performance, .sidebar-nav li.role, .sidebar-nav li.rehearsals, .sidebar-nav li.production, .sidebar-nav li.user, .sidebar-nav li.play {
     background-repeat: no-repeat;
     background-position: 98%;
     background-size: 40px;
@@ -114,6 +114,14 @@
 
 .sidebar-nav li.production {
     background-image: url("../images/icons/production.png");
+}
+
+.sidebar-nav li.play {
+    background-image: url("../images/icons/play.png");
+}
+
+.sidebar-nav li.user {
+    background-image: url("../images/icons/users.png");
 }
 
 table.table tbody tr.row-item-detail.loaded td {
@@ -146,7 +154,6 @@ table.table tbody tr.row-item-detail.loaded td {
     padding: 0;
     color: gray;
 }
-
 .dashboard-item a, .dashboard-item a:hover, .dashboard-item a:active a:visited {
     color: gray;
     text-decoration: none;
