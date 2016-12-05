@@ -47,14 +47,16 @@ class ProductionFormFactory
                 'director' => 'hra',
                 'actor' => 'hra 2',
                 'organizer' => 'hra 3'
-            ]);
+            ])
+            ->setRequired('forms.user.roleHint')
+            ->setAttribute('class', 'form-control');
         $form->addMultiSelect('options', 'Možnosti:', [
             'director' => 'herec 1',
             'actor' => 'herec  2',
             'organizer' => 'herec 3'
         ])
             ->setRequired('forms.user.roleHint')
-            ->setAttribute('class', 'form-control')
+            ->setAttribute('class', 'form-control selectpicker')
             ->setAttribute('placeholder', 'forms.rehearsal.production');
 
         $form->addText('date')
