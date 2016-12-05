@@ -48,7 +48,7 @@ class Role {
 	/**
 	 * Many Roles is played by many users.
 	 * @ORM\ManyToMany(targetEntity="User")
-	 * @ORM\JoinTable(name="Role_actors",
+	 * @ORM\JoinTable(name="role_actors",
 	 *      joinColumns={@ORM\JoinColumn(name="Role_id", referencedColumnName="id")},
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="User_id", referencedColumnName="id", unique=true)}
 	 *      )

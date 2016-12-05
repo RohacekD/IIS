@@ -23,14 +23,6 @@ use App\ISModule\Model;
 class PerformancesPresenter extends SecuredPresenter {
     /** @var Forms\RehearsalFormFactory @inject */
     public $performanceFormFactory;
-
-    protected function createComponentAddPerformance()
-    {
-
-        return $this->performanceFormFactory->create(function () {
-
-        });
-    }
 	/**
 	 * @var @persistent Nette\Database\Table\Selection
 	 */
@@ -83,8 +75,19 @@ class PerformancesPresenter extends SecuredPresenter {
 		                             ->setParameter( 'user', $this->getUser()->getId() );
 	}
 
+	public function actionDetail( $id ) {
+
+	}
+
 	public function handleDelete( $id ) {
 		//Debugger::dump( $id );
 		//TODO
+	}
+
+	protected function createComponentAddPerformance() {
+
+		return $this->performanceFormFactory->create( function () {
+
+		} );
 	}
 }

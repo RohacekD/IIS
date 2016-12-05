@@ -5,11 +5,11 @@
 			<h1>{_main.upcommingPerformance}</h1> <a href="#" class="btn btn-default">{_performances.addPerformance}</a>
 
 		</div>
-		{cache "upcommingPerformance", expire => '20 minutes', tags => ['performances']}
+		{*{cache "upcommingPerformance", expire => '20 minutes', tags => ['performances']}*}
 			{foreach $upcomingPerformances as $upcomingPerformance}
-				{control performance $upcomingPerformance->ID}
+				{control performance $upcomingPerformance["id"]}
 			{/foreach}
-		{/cache}
+		{*{/cache}*}
 
 	</div>
 	<div n:if="$upcomingRehearsals" class="rehearsal-group container-fluid">
@@ -17,10 +17,10 @@
 			<h1>{_main.upcommingRehearsal}</h1> <a href="#" class="btn btn-default">{_rehearsals.addRehearsal}</a>
 
 		</div>
-		{cache "upcommingRehearsal", expire => '20 minutes', tags => ['rehearsals']}
+		{*{cache "upcommingRehearsal", expire => '20 minutes', tags => ['rehearsals']}*}
 			{foreach $upcomingRehearsals as $upcommingRehearsal}
-				{control rehearsal $upcommingRehearsal->ID}
+				{control rehearsal $upcommingRehearsal["id"]}
 			{/foreach}
-		{/cache}
+		{*{/cache}*}
 	</div>
 {/block}
