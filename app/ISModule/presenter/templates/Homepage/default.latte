@@ -1,18 +1,19 @@
 {block content}
 	<div n:if="$upcomingPerformances" class="performance-group container-fluid">
 		<h2>{_main.upcommingPerformance}</h2>
-		{dump $upcomingPerformances}
-		{foreach $upcomingPerformances as $upcomingPerformance}
-			{control performance $upcomingPerformance->ID}
-		{/foreach}
+		{cache "upcommingPerformance", expire => '20 minutes', tags => ['performances']}
+			{foreach $upcomingPerformances as $upcomingPerformance}
+				{control performance $upcomingPerformance->ID}
+			{/foreach}
+		{/cache}
 
 	</div>
-	<div class="rehearsal-group container-fluid">
+	<div n:if="$upcomingRehearsals" class="rehearsal-group container-fluid">
 		<h2>{_main.upcommingRehearsal}</h2>
-		{control rehearsal 1}
-		{control rehearsal 1}
-		{control rehearsal 1}
-		{control rehearsal 1}
-
+		{cache "upcommingRehearsal", expire => '20 minutes', tags => ['rehearsals']}
+			{foreach $upcomingRehearsals as $upcommingRehearsal}
+				{control rehearsal $upcommingRehearsal->ID}
+			{/foreach}
+		{/cache}
 	</div>
 {/block}
