@@ -8,3 +8,8 @@ productions:
 	director: "Režisér"
 	author: "Autor"
 	timeDifficulty: "Časovná náročnost"
+performances:
+    name: "Název"
+    scene: "Scéna"
+    director: "Režisér"
+    date: "Datum"

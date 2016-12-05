@@ -24,8 +24,9 @@
     h3 {
       font-size: 15px;
       border-bottom: solid 1px gray;
-      text-align: center;
+
     }
+
     table {
       width: 100%;
     }
@@ -34,6 +35,10 @@
       color: gray;
     }
 
+  }
 
+  .performance-control :hover {
+    text-decoration: none;
+    background-color: #a9c7de;
   }
 }
