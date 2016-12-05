@@ -2,7 +2,8 @@
 	<div n:if="$upcomingPerformances" class="performance-group container-fluid">
 
 		<div class="headline-wrapper">
-			<h1>{_main.upcommingPerformance}</h1> <a href="#" class="btn btn-default">{_performances.addPerformance}</a>
+			<h1>{_main.upcommingPerformance}</h1>
+			<a n:href="Performance:add" class="btn btn-default">{_performances.addPerformance}</a>
 
 		</div>
 		{*{cache "upcommingPerformance", expire => '20 minutes', tags => ['performances']}*}
@@ -14,7 +15,8 @@
 	</div>
 	<div n:if="$upcomingRehearsals" class="rehearsal-group container-fluid">
 		<div class="headline-wrapper">
-			<h1>{_main.upcommingRehearsal}</h1> <a href="#" class="btn btn-default">{_rehearsals.addRehearsal}</a>
+			<h1>{_main.upcommingRehearsal}</h1>
+			<a n:href="Rehearsal:add" class="btn btn-default">{_rehearsals.addRehearsal}</a>
 
 		</div>
 		{*{cache "upcommingRehearsal", expire => '20 minutes', tags => ['rehearsals']}*}

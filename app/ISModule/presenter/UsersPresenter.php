@@ -30,25 +30,44 @@ class UsersPresenter extends SecuredPresenter
 	 * @return Nette\Application\UI\Form
 	 */
 	protected function createComponentAddUser() {
-		$database    = $this->database;
+		$em          = $this->entityManager;
 		$userManager = $this->userManager;
 
-		return $this->userFormFactory->create( function ( Nette\Application\UI\Form $form, $values ) use ( $database, $userManager ) {
-			$contactId = null;
+		/** @var $em \Kdyby\Doctrine\EntityManager */
+		return $this->userFormFactory->create( function ( Nette\Application\UI\Form $form, $values ) use ( $em, $userManager ) {
+			$contact = null;
 			try {
-				$contactId = $userManager->add( $values->username, $values->password, $values->role );
+				$contact = $userManager->add( $values->username, $values->password, $values->role );
 			} catch ( Model\DuplicateNameException $e ) {
 				$form->addError( 'forms.user.errorDuplicateName' );
 			}
-			$database->table( "Kontakt" )->where( [
-				'ID' => $contactId
-			] )->update( [
-				'mesto'   => $values->city,
-				'ulice'   => $values->street,
-				'cp'      => $values->houseNumber,
-				'telefon' => $values->phone,
-				'email'   => $values->email,
-			] );
+			$contact->setCity( $values->city );
+			$contact->setStreet( $values->street );
+			$contact->setHouseNumber( $values->houseNumber );
+			$contact->setPhone( $values->phone );
+			$contact->setEmail( $values->email );
+
+			$this->redirect( 'Users:edit ' . $values->username );
+		} );
+	}
+
+	/**
+	 * Sign-in form factory.
+	 * @return Nette\Application\UI\Form
+	 */
+	protected function createComponentEditUser() {
+		$em          = $this->entityManager;
+		$userManager = $this->userManager;
+
+		/** @var $em \Kdyby\Doctrine\EntityManager */
+		return $this->userFormFactory->create( function ( Nette\Application\UI\Form $form, $values ) use ( $em, $userManager ) {
+			$contact = null;
+			//$em->getRepository(Model\User::class)->findOneById();
+			$contact->setCity( $values->city );
+			$contact->setStreet( $values->street );
+			$contact->setHouseNumber( $values->houseNumber );
+			$contact->setPhone( $values->phone );
+			$contact->setEmail( $values->email );
 
 			$this->redirect( 'Users:edit ' . $values->username );
 		} );

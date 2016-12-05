@@ -10,6 +10,7 @@ namespace App\ISModule\Presenters;
 
 use Ublaboo\DataGrid\DataGrid;
 use App\ISModule\Forms;
+use App\ISModule\Model;
 /**
  * Class RehearsalsPresenter
  * @package App\ISModule\Presenters
