@@ -32,7 +32,7 @@ class Performance {
 	/**
 	 * Many Roles is played by many users.
 	 * @ORM\ManyToMany(targetEntity="User")
-	 * @ORM\JoinTable(name="Performance_actors",
+	 * @ORM\JoinTable(name="performance_actors",
 	 *      joinColumns={@ORM\JoinColumn(name="Performance_id", referencedColumnName="id")},
 	 *      inverseJoinColumns={@ORM\JoinColumn(name="User_id", referencedColumnName="id", unique=true)}
 	 *      )
