@@ -70,11 +70,6 @@
     margin: 3px;
 }
 
-.performance-group .well h3 {
-    font-size: 15px;
-    border-bottom: solid 1px gray;
-}
-
 .performance-group .well table {
     width: 100%;
 }
@@ -82,11 +77,6 @@
 .performance-group .well tr {
     padding: 0;
     color: gray;
-}
-
-.performance-group .performance-control :hover {
-    text-decoration: none;
-    background-color: #a9c7de;
 }
 
 .sidebar-nav li {
@@ -129,6 +119,41 @@
 table.table tbody tr.row-item-detail.loaded td {
   padding: 0;
     border: 0;
+}
+
+.dashboard-item .well {
+    min-width: 160px;
+    padding: 10px;
+    margin: 3px;
+}
+
+.dashboard-item .well h3 {
+    font-size: 15px;
+    border-bottom: solid 1px gray;
+}
+
+.dashboard-item .well .image-wrapper {
+    position: relative;
+    margin: 0 30%;
+    width: 40%;
+}
+
+.dashboard-item .well table {
+    width: 100%;
+}
+
+.dashboard-item .well tr {
+    padding: 0;
+    color: gray;
+}
+
+.dashboard-item a, .dashboard-item a:hover, .dashboard-item a:active a:visited {
+    color: gray;
+    text-decoration: none;
+}
+
+.dashboard-item:hover .well {
+    background-color: #a9c7de;
 }
 
 /*
@@ -334,6 +359,29 @@ html, body {
     font-size: 10px;
     line-height: 50px;
     vertical-align: middle;
+}
+
+.headline-wrapper {
+    border-bottom: solid 1px gray;
+    display: block;
+    position: relative;
+    height: 45px;
+    margin-bottom: 5px;
+}
+
+.headline-wrapper h1 {
+    font-size: 20px;
+    display: inline-block;
+    bottom: 5px;
+    margin: 0px;
+    position: absolute;
+}
+
+.headline-wrapper .btn {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    padding: 2px 12px;
 }
 
 /*# sourceMappingURL=style.css.map */

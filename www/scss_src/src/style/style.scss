@@ -26,7 +26,6 @@ html, body {
   }
 }
 
-
 #top-navbar img {
   height: 40px;
   position: relative;
@@ -53,4 +52,27 @@ html, body {
     vertical-align: middle;
   }
 
+}
+
+.headline-wrapper {
+  border-bottom: solid 1px gray;
+  display: block;
+  position: relative;
+  height: 45px;
+  margin-bottom: 5px;
+  h1 {
+    font-size: 20px;
+    display: inline-block;
+    bottom: 5px;
+    margin: 0px;
+    position: absolute;
+
+  }
+  .btn {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    padding: 2px 12px;
+
+  }
 }

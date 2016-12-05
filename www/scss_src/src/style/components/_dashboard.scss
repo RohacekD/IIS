@@ -11,6 +11,12 @@
 
     }
 
+    .image-wrapper {
+      position: relative;
+      margin: 0 30%;
+      width: 40%;
+    }
+
     table {
       width: 100%;
     }
@@ -20,4 +26,14 @@
     }
 
   }
+
+  a, a:hover, a:active a:visited {
+    color: gray;
+    text-decoration: none;
+  }
 }
+
+.dashboard-item:hover .well {
+  background-color: #a9c7de;
+}
+
