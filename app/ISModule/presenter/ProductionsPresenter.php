@@ -17,24 +17,18 @@ use App\ISModule\Forms;
  * @package App\ISModule\Presenters
  * @brief Means "inscenace"
  */
-class ProductionsPresenter extends SecuredPresenter
-{
-    /** @var Forms\ProductionFormFactory @inject */
-    public $productionFormFactory;
-
-    protected function createComponentAddProduction()
-    {
-
-        return $this->productionFormFactory->create(function () {
-        });
-    }
-
-	const PRODUCTION_TABLE = "Inscenace";
-	const PLAYS_TABLE = "Divadelni_hra";
+class ProductionsPresenter extends SecuredPresenter {
+	/** @var Forms\ProductionFormFactory @inject */
+	public $productionFormFactory;
 	/**
 	 * @var @persistent Nette\Database\Table\Selection
 	 */
 	private $gridDataSource;
+
+	/**
+	 * @var Model\Production
+	 */
+	private $production;
 
 	public function createComponentMyGrid( $name ) {
 		$grid = $this->makeGrid( $name );
@@ -84,8 +78,29 @@ class ProductionsPresenter extends SecuredPresenter
 
 	}
 
+	public function actionList() {
+		$this->gridDataSource = $this->getEm()->createQueryBuilder()
+		                             ->select( 'pro, play' )
+		                             ->from( Model\Production::class, 'pro' )
+		                             ->join( 'pro.play', 'play' );
+	}
+
+	public function actionAdd() {
+		$this->production = new Model\Production();
+	}
+
+	public function actionEdit( $id ) {
+		$this->production = $this->getEm()->getRepository( Model\Production::class )->getOneById( $id );
+	}
+
 	public function handleDelete( $id ) {
 		//Debugger::dump( $id );
 		//todo
+	}
+
+	protected function createComponentAddProduction() {
+
+		return $this->productionFormFactory->create( function () {
+		}, $this->production );
 	}
 }
