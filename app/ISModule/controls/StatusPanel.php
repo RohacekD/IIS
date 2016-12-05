@@ -8,6 +8,7 @@
 
 namespace App\ISModule\Controls;
 
+use Kdyby\Doctrine\EntityManager;
 use Nette\Application\UI\Control,
 	Nette;
 use Tracy\Debugger;
@@ -17,20 +18,11 @@ use Tracy\Debugger;
  * @package App\ISModule\Controls
  */
 class StatusPanel extends Control {
-	/** @var Nette\Database\Context */
-	protected $database;
 	/** @var Nette\Security\Identity */
 	private $user;
 
-	/**
-	 * StatusPanel constructor.
-	 *
-	 * @param Nette\Security\IIdentity $user
-	 * @param Nette\Database\Context $database
-	 */
-	public function __construct( Nette\Security\IIdentity $user, Nette\Database\Context $database ) {
+	public function __construct( Nette\Security\IIdentity $user ) {
 		parent::__construct();
-		$this->database = $database;
 		$this->user     = $user;
 	}
 

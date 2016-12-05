@@ -1,11 +1,11 @@
 {extends $original_template}
 
 {block detail}
-	<h2>{$item->autor} - {$item->nazev}</h2>
-	{dump $item->casova_narocnost}
-	<b>{_ main.timeDifficulty}: </b>{$item->casova_narocnost|date:"%h:%i"}
+	<h2>{$item->getPlay()->getAuthor()} - {$item->getName()}</h2>
+	{dump $item->getPlay()->getTimeNeeded()}
+	<b>{_ main.timeDifficulty}: </b>{$item->getPlay()->getTimeNeeded()|date:"%h:%i"}
 	<h3>Popis</h3>
-	<p>{$item->popis}</p>
+	<p>{$item->getPlay()->getDescription()}</p>
 
 	<span class="btn btn-default btn-sm">{_ main.edit}</span>
 {/block}

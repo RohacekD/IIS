@@ -1,26 +1,26 @@
 {block content}
-    <div n:if="$upcomingPerformances" class="performance-group container-fluid">
-        <div class="headline-wrapper">
-            <h1>{_main.upcommingPerformance}</h1> <a href="#" class="btn btn-default">{_performances.addPerformance}</a>
+	<div n:if="$upcomingPerformances" class="performance-group container-fluid">
 
-        </div>
-        {cache "upcommingPerformance", expire => '20 minutes', tags => ['performances']}
-            {foreach $upcomingPerformances as $upcomingPerformance}
-                {control performance $upcomingPerformance->ID}
-            {/foreach}
-        {/cache}
+		<div class="headline-wrapper">
+			<h1>{_main.upcommingPerformance}</h1> <a href="#" class="btn btn-default">{_performances.addPerformance}</a>
 
-    </div>
-    <div n:if="$upcomingRehearsals" class="rehearsal-group container-fluid">
-        <div class="headline-wrapper">
-            <h1>{_main.upcommingRehearsal}</h1> <a href="#" class="btn btn-default">{_rehearsals.addRehearsal}</a>
+		</div>
+		{cache "upcommingPerformance", expire => '20 minutes', tags => ['performances']}
+			{foreach $upcomingPerformances as $upcomingPerformance}
+				{control performance $upcomingPerformance->ID}
+			{/foreach}
+		{/cache}
 
-        </div>
+	</div>
+	<div n:if="$upcomingRehearsals" class="rehearsal-group container-fluid">
+		<div class="headline-wrapper">
+			<h1>{_main.upcommingRehearsal}</h1> <a href="#" class="btn btn-default">{_rehearsals.addRehearsal}</a>
 
-        {cache "upcommingRehearsal", expire => '20 minutes', tags => ['rehearsals']}
-            {foreach $upcomingRehearsals as $upcommingRehearsal}
-                {control rehearsal $upcommingRehearsal->ID}
-            {/foreach}
-        {/cache}
-    </div>
+		</div>
+		{cache "upcommingRehearsal", expire => '20 minutes', tags => ['rehearsals']}
+			{foreach $upcomingRehearsals as $upcommingRehearsal}
+				{control rehearsal $upcommingRehearsal->ID}
+			{/foreach}
+		{/cache}
+	</div>
 {/block}

@@ -28,16 +28,22 @@ services:
 	cacheStorage:
 			class: Nette\Caching\Storages\DevNullStorage
 
-database:
-	dsn: "mysql:host=sql7.freesqldatabase.com;dbname=sql7142336"
-	user: sql7142336
-	password: TMyFXqt9yb
-	options:
-		lazy: yes
-
 extensions:
     translation: Kdyby\Translation\DI\TranslationExtension
+    console: Kdyby\Console\DI\ConsoleExtension
+    events: Kdyby\Events\DI\EventsExtension
+    annotations: Kdyby\Annotations\DI\AnnotationsExtension
+    doctrine: Kdyby\Doctrine\DI\OrmExtension
+
+doctrine:
+	user: sql7142336
+	host: sql7.freesqldatabase.com
+	password: TMyFXqt9yb
+	dbname: sql7142336
+	metadata:
+		App: %appDir%\ISModule\model\
 
 translation:
     default: cs
     fallback: [cs_CZ, cs]
+    whitelist: [cs]

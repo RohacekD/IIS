@@ -1,1 +1,7 @@
-parameters:
+doctrine:
+	user: adminIC15Ufb
+	password: "vi6TcqGQa7xZ"
+	dbname: damoclesus
+	host: localhost
+	metadata:
+		App\ISModule\Model: %appDir%\ISModule\model

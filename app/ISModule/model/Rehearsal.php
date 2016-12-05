@@ -2,21 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: Dominik
- * Date: 06.11.2016
- * Time: 0:03
+ * Date: 05.12.2016
+ * Time: 12:30
  */
 
 namespace App\ISModule\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-use Nette;
 
 /**
- * Class Performance
- * @package App\ISModule\Model
+ * Class Rehearsal
+ * @package app\ISModule\model
  * @ORM\Entity
  */
-class Performance {
+class Rehearsal {
 	use \Kdyby\Doctrine\Entities\Attributes\Identifier;
 
 	/**
@@ -30,14 +29,11 @@ class Performance {
 	protected $production;
 
 	/**
-	 * Many Roles is played by many users.
-	 * @ORM\ManyToMany(targetEntity="User")
-	 * @ORM\JoinTable(name="Performance_actors",
-	 *      joinColumns={@ORM\JoinColumn(name="Performance_id", referencedColumnName="id")},
-	 *      inverseJoinColumns={@ORM\JoinColumn(name="User_id", referencedColumnName="id", unique=true)}
-	 *      )
+	 * @return int
 	 */
-	private $actors;
+	public function getId() {
+		return $this->id;
+	}
 
 	/**
 	 * @return mixed
@@ -66,27 +62,4 @@ class Performance {
 	public function setProduction( $production ) {
 		$this->production = $production;
 	}
-
-	/**
-	 * @return int
-	 */
-	public function getId() {
-		return $this->id;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function getActors() {
-		return $this->actors;
-	}
-
-	/**
-	 * @param mixed $actors
-	 */
-	public function setActors( $actors ) {
-		$this->actors = $actors;
-	}
-
-
 }

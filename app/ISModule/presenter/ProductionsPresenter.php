@@ -8,6 +8,7 @@
 
 namespace App\ISModule\Presenters;
 
+use App\ISModule\Model;
 use Ublaboo\DataGrid\DataGrid;
 use App\ISModule\Forms;
 
@@ -51,38 +52,36 @@ class ProductionsPresenter extends SecuredPresenter
 		$grid = new DataGrid( $this, $name );
 
 		$source = $this->gridDataSource;
-		$grid->setPrimaryKey( "ID" );
+		$grid->setPrimaryKey( "id" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
 
-		$grid->addColumnText( 'nazev', 'tables.productions.name' );
-		$grid->addColumnText( 'scena', 'tables.productions.scene' );
-		$grid->addColumnText( 'login_Reziser', 'tables.productions.director' );
-		$grid->addColumnText( 'autor', 'tables.productions.author' );
-		//$grid->addColumnDateTime( 'casova_narocnost', 'tables.productions.timeDifficulty' );
+		$grid->addColumnText( 'name', 'tables.productions.name' );
+		$grid->addColumnText( 'scene', 'tables.productions.scene' );
+		$grid->addColumnText( 'director.username', 'tables.productions.director' );
+		$grid->addColumnText( 'play.author', 'tables.productions.author' );
+		$grid->addColumnDateTime( 'play.time_needed', 'tables.productions.timeDifficulty' );
 		$grid->addAction( "delete", "", "delete!" )
 		     ->setIcon( 'trash' )
 		     ->setTitle( 'Delete' )
 		     ->setClass( 'btn btn-xs btn-danger ajax' )
-		     ->setConfirm( 'Do you really want to delete production \'%s\'?', 'nazev' );
+		     ->setConfirm( 'Do you really want to delete production \'%s\'?', 'name' );
 
-		$grid->setItemsDetail( true, self::PRODUCTION_TABLE . ".ID" );
+		$grid->setItemsDetail( true, "pro.id" );
 
 		return $grid;
 	}
 
 	public function actionMy() {
-		//todo
-		$this->gridDataSource = $this->database->table( self::PRODUCTION_TABLE )
-		                                       ->select( self::PRODUCTION_TABLE . ".ID, "
-		                                                 . self::PRODUCTION_TABLE . ".nazev, "
-		                                                 . self::PRODUCTION_TABLE . ".scena, "
-		                                                 . self::PRODUCTION_TABLE . ".login_Reziser, "
-		                                                 . self::PLAYS_TABLE . ".popis, "
-		                                                 . self::PLAYS_TABLE . ".jmeno, "
-		                                                 . self::PLAYS_TABLE . ".fotka, "
-		                                                 . self::PLAYS_TABLE . ".casova_narocnost, "
-		                                                 . self::PLAYS_TABLE . ".autor " );
+		$this->gridDataSource = $this->getEm()->createQueryBuilder()
+		                             ->select( 'pro, play' )
+		                             ->from( Model\Production::class, 'pro' )
+		                             ->join( 'pro.play', 'play' )
+		                             ->join( 'pro.roles', 'roles' )
+		                             ->join( 'roles.actors', 'u' )
+		                             ->where( 'u.id = :user' )
+		                             ->setParameter( 'user', $this->getUser()->getId() );
+
 	}
 
 	public function handleDelete( $id ) {

@@ -8,160 +8,192 @@
 
 namespace App\ISModule\Model;
 
-use Grido\Exception;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 use Nette;
 
-class Role extends MyModel
-{
-	const DIFFICULTIES = array('nízká', 'střední', 'vysoká');
-	private $id;
+/**
+ * Class Role
+ * @package App\ISModule\Model
+ * @ORM\Entity
+ */
+class Role {
+	use \Kdyby\Doctrine\Entities\Attributes\Identifier;
+	const DIFFICULTIES = array( 'nízká', 'střední', 'vysoká' );
+
 	private $name;
+	/**
+	 * @ORM\Column(type="string", length=25, columnDefinition="ENUM('nízká', 'střední', 'vysoká')")
+	 */
 	private $difficulty;
+	/**
+	 * @ORM\Column(type="string", length=25, columnDefinition="ENUM('nízká', 'střední', 'vysoká')")
+	 */
 	private $time_difficulty;
+	/**
+	 * @ORM\Column(type="string", length=1024)
+	 */
 	private $description;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Production", inversedBy="roles")
+	 */
 	private $production = null;
-	private $production_id;
+
+	/**
+	 * @ORM\OneToMany(targetEntity="Property", mappedBy="property")
+	 */
+	private $properties;
+
+	/**
+	 * Many Roles is played by many users.
+	 * @ORM\ManyToMany(targetEntity="User")
+	 * @ORM\JoinTable(name="Role_actors",
+	 *      joinColumns={@ORM\JoinColumn(name="Role_id", referencedColumnName="id")},
+	 *      inverseJoinColumns={@ORM\JoinColumn(name="User_id", referencedColumnName="id", unique=true)}
+	 *      )
+	 */
+	private $actors;
 
 	/**
 	 * Role constructor.
-	 * @param $id
 	 */
-	public function __construct($id)
-	{
-		parent::__construct("Role");
-		if($id){
-			$this->getById($id);
-		}
+	public function __construct() {
+			$this->actors = new ArrayCollection();
 	}
 
-
-	public function getById($id)
-	{
-		$row = $this->getModelsRow($id);
-		$this->id = $row["id"];
-		$this->name = $row["nazev"];
-		$this->setDifficulty($row["obtiznost"]);
-		$this->time_difficulty = $row["casova_narocnost"];
-		$this->description = $row["popis"];
-		$this->production_id = $row["ID_inscenace"];
-		$this->production = null;
-
-	}
-
-	public function saveModel()
-	{
-		$data = array();
-		if($this->id){
-			$data["id"] = $this->id;
-		}
-		if(!$this->name){
-			throw new Exception("Production have to have a name");
-		}
-		$data["nazev"] = $this->name;
-		$data["obtiznost"] = $this->difficulty;
-		$data["casova_narocnost"] = $this->time_difficulty;
-		$data["popis"] = $this->description;
-		$data["ID_inscenace"] = $this->production_id;
-		$this->saveToDB($data);
-	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->id;
 	}
 
 	/**
 	 * @param mixed $id
 	 */
-	public function setId($id)
-	{
+	public function setId( $id ) {
 		$this->id = $id;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
 	/**
 	 * @param mixed $name
 	 */
-	public function setName($name)
-	{
+	public function setName( $name ) {
 		$this->name = $name;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getDifficulty()
-	{
+	public function getDifficulty() {
 		return $this->difficulty;
 	}
 
 	/**
 	 * @param $difficulty
+	 *
 	 * @throws Exception
 	 */
-	public function setDifficulty($difficulty)
-	{
-		if(!in_array($difficulty, self::DIFFICULTIES))
-			throw new Exception("Wrong difficulty");
+	public function setDifficulty( $difficulty ) {
+		if ( ! in_array( $difficulty, self::DIFFICULTIES ) ) {
+			throw new Exception( "Wrong difficulty" );
+		}
 		$this->difficulty = $difficulty;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getTimeDifficulty()
-	{
+	public function getTimeDifficulty() {
 		return $this->time_difficulty;
 	}
 
 	/**
 	 * @param mixed $time_difficulty
 	 */
-	public function setTimeDifficulty($time_difficulty)
-	{
+	public function setTimeDifficulty( $time_difficulty ) {
 		$this->time_difficulty = $time_difficulty;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getDescription()
-	{
+	public function getDescription() {
 		return $this->description;
 	}
 
 	/**
 	 * @param mixed $description
 	 */
-	public function setDescription($description)
-	{
+	public function setDescription( $description ) {
 		$this->description = $description;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getProductionId()
-	{
+	public function getProductionId() {
 		return $this->production_id;
 	}
 
 	/**
 	 * @param mixed $production_id
 	 */
-	public function setProductionId($production_id)
-	{
+	public function setProductionId( $production_id ) {
 		$this->production_id = $production_id;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getProduction() {
+		return $this->production;
+	}
+
+	/**
+	 * @param mixed $production
+	 */
+	public function setProduction( $production ) {
+		$this->production = $production;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getProperties() {
+		return $this->properties;
+	}
+
+	/**
+	 * @param mixed $properties
+	 */
+	public function setProperties( $properties ) {
+		$this->properties = $properties;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getActors() {
+		return $this->actors;
+	}
+
+	/**
+	 * @param mixed $actors
+	 */
+	public function setActors( $actors ) {
+		$this->actors = $actors;
+	}
+
+
 
 }

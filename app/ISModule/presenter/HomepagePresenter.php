@@ -3,41 +3,34 @@
 namespace App\ISModule\Presenters;
 
 use Nette;
-use App\Model;
+use App\ISModule\Model;
 use App\ISModule\Controls;
+use Tracy\Debugger;
 
 
-class HomepagePresenter extends SecuredPresenter
-{
+class HomepagePresenter extends SecuredPresenter {
 
 	public function createComponentPerformance() {
-		return new Controls\PerformanceControl( $this->getUser()->getIdentity(), $this->database );
+		return new Controls\PerformanceControl( $this->getUser()->getIdentity(), $this->entityManager );
 	}
 
 	public function createComponentRehearsal() {
-		return new Controls\RehearsalControl( $this->getUser()->getIdentity(), $this->database );
+		return new Controls\RehearsalControl( $this->getUser()->getIdentity(), $this->entityManager );
 	}
 
 
-	public function renderDefault()
-	{
+	public function renderDefault() {
+		/** @var \Kdyby\Doctrine\EntityManager $em */
+		$em                                   = $this->entityManager;
 		$this->template->upcomingPerformances =
-			$this->database->query( "
-				SELECT `Predstaveni`.`ID` 
-				FROM `Predstaveni` 
-				LEFT JOIN `Inscenace` ON `Predstaveni`.`ID_Inscenace` = `Inscenace`.ID 
-				LEFT JOIN `Predstaveni_Herec` ON `Predstaveni`.`ID` = `Predstaveni_Herec`.`ID_Predstaveni`
-				WHERE (`Predstaveni_Herec`.`login_Herec` = '" . $this->getUser()->getId() . "') 
-				ORDER BY `Predstaveni`.`Datum` 
-				LIMIT 4" )->fetchAll();
-		$this->template->upcomingRehearsals   =
-			$this->database->query( "
-				SELECT `Zkouska`.ID 
-				FROM `Zkouska` 
-				LEFT JOIN `Inscenace` ON `Zkouska`.`Inscenace_ID` = `Inscenace`.`ID`
-				LEFT JOIN `Inscenace_Herec` ON `Inscenace`.`ID` = `Inscenace_Herec`.`ID_Inscenace`
-				WHERE (`Inscenace_Herec`.`login_Herec` = '" . $this->getUser()->getId() . "') 
-				ORDER BY `Zkouska`.`Datum` 
-				LIMIT 4" )->fetchAll();
+			$em->createQuery( 'SELECT r.id FROM App\ISModule\Model\Performance r JOIN r.production p JOIN p.roles s JOIN s.actors users WHERE users.id = :a ORDER BY r.date' )
+			   ->setParameter( "a", $this->getUser()->getIdentity()->getId() )
+			   ->setMaxResults( 4 )
+			   ->getResult();
+		$this->template->upcomingRehearsals =
+			$em->createQuery( 'SELECT r.id FROM App\ISModule\Model\Rehearsal r JOIN r.production p JOIN p.roles s JOIN s.actors users WHERE users.id = :a ORDER BY r.date' )
+			   ->setParameter( "a", $this->getUser()->getIdentity()->getId() )
+			   ->setMaxResults( 4 )
+			   ->getResult();
 	}
 }

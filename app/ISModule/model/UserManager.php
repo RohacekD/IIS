@@ -4,6 +4,9 @@ namespace App\ISModule\Model;
 
 use Nette;
 use Nette\Security\Passwords;
+use App\ISModule\Model;
+use Kdyby\Doctrine\EntityManager;
+use Doctrine;
 use Tracy\Debugger;
 
 
@@ -12,27 +15,19 @@ use Tracy\Debugger;
  * @package App\ISModule\Model
  */
 class UserManager implements Nette\Security\IAuthenticator {
-	const CONTACT_TABLE = "Kontakt";
-	const CONTACT_COLUMN = "id_kontakt";
 	use Nette\SmartObject;
 
-	const
-		TABLE_NAME = array(
-		"Herec",
-		"Reziser",
-		"Organizator"
-	),
-		COLUMN_ID = 'login',
-		COLUMN_NAME = 'login',
-		COLUMN_PASSWORD_HASH = 'heslo';
+	/**
+	 * @var \Kdyby\Doctrine\EntityManager
+	 */
+	public $entityManager;
 
-
-	/** @var Nette\Database\Context */
-	private $database;
-
-
-	public function __construct( Nette\Database\Context $database ) {
-		$this->database = $database;
+	/**
+	 * @param EntityManager $entityManager
+	 */
+	public function __construct(EntityManager $entityManager)
+	{
+		$this->entityManager = $entityManager;
 	}
 
 
@@ -41,112 +36,68 @@ class UserManager implements Nette\Security\IAuthenticator {
 	 *
 	 * @return Nette\Security\Identity
 	 * @throws Nette\Security\AuthenticationException
+	 *
+	 * @return Nette\Security\IIdentity
 	 */
 	public function authenticate( array $credentials ) {
-		list( $username, $password ) = $credentials;
-		$table_name = "";
-		$row = null;
 
-		foreach ( self::TABLE_NAME as $table ) {
-			$row = $this->database->table( $table)->where( self::COLUMN_NAME, $username )->fetch();
+		/*$this->add( "actor", "actor", "actor" );
+		$this->add( "director", "director", "director" );
+		$this->add( "organizer", "organizer", "organizer" );*/
+		list($login, $password) = $credentials;
 
-			if ( ! $row ) {
-				continue;
-			}
-			else{
-				$table_name = $table;
-				break;
-			}
-		}
-		if (!$row) {
+		/** @var Model\User $user */
+		$user = $this->entityManager->getRepository(Model\User::class)->findOneBy([
+			'username' => $login
+		]);
+
+		if (!$user)
+		{
 			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
-
-		} elseif (!Passwords::verify($password, $row[self::COLUMN_PASSWORD_HASH])) {
+		}
+		elseif (!Passwords::verify($password, $user->getPassword()))
+		{
 			throw new Nette\Security\AuthenticationException('The password is incorrect.', self::INVALID_CREDENTIAL);
 		}
-
-		$arr = $row->toArray();
-		unset( $arr[ self::COLUMN_PASSWORD_HASH ] );
-		$id = $arr[ self::COLUMN_ID ];
-		unset( $arr[ self::COLUMN_ID ] );
-		$role = $this->tableToRole( $table_name );
-
-		return new Nette\Security\Identity( $id, $role, $arr );
-	}
-
-	private function tableToRole( $table ) {
-		$tables = array(
-			"Herec"       => "actor",
-			"Reziser"     => "director",
-			"Organizator" => "organizer"
-		);
-		if ( ! array_key_exists( $table, $tables ) ) {
-			throw new BadTableNameException;
+		elseif (Passwords::needsRehash($user->getPassword()))
+		{
+			$user->setPassword(Passwords::hash($password));
+			$this->entityManager->persist($user);
+			$this->entityManager->flush();
 		}
 
-		return $tables[ $table ];
+		return $user;
 	}
 
 	/**
 	 * @param $username
 	 * @param $password
-	 * @param $role - Table to store data
+	 * @param $role
 	 *
+	 * @return Contact
 	 * @throws DuplicateNameException
-	 * @throws BadTableNameException
 	 */
 	public function add( $username, $password, $role ) {
-		if ( ! $this->loginUnique( $username ) ) {
-			throw new DuplicateNameException;
-		}
 
-		$table = $this->roleToTable( $role );
-
-
+		$user = new Model\User();
+		$user->setUsername( $username );
+		$user->setPassword(Passwords::hash( $password ));
+		$user->setRole( $role );
 		try {
-			$contact = $this->database->table( self::CONTACT_TABLE )->insert( [
-
-			] );
-
-
-			$this->database->table( $table )->insert( [
-				self::COLUMN_NAME          => $username,
-				self::COLUMN_PASSWORD_HASH => Passwords::hash( $password ),
-				self::CONTACT_COLUMN       => $contact->getPrimary()
-			] );
-		} catch ( Nette\Database\UniqueConstraintViolationException $e ) {
-			throw new DuplicateNameException;
+			$this->entityManager->persist( $user );
+			$this->entityManager->flush(); // save it to the database
+		}
+		catch (Doctrine\DBAL\Exception\UniqueConstraintViolationException $exception){
+			throw new DuplicateNameException();
 		}
 
-		return $contact->getPrimary();
+		$contact = new Model\Contact($user);
+
+		$this->entityManager->persist($contact);
+		$this->entityManager->flush(); // save it to the database
+
+		return $contact;
 	}
-
-
-	private function loginUnique( $username ) {
-		foreach ( self::TABLE_NAME as $table ) {
-			$row = $this->database->table( $table )->where(
-				array( self::COLUMN_NAME => $username )
-			)->count();
-			if ( $row != 0 ) {
-				return false;
-			}
-		}
-
-		return true;
-	}
-
-	private function roleToTable($role){
-		$tables = array(
-			"actor" => "Herec",
-			"director" => "Reziser",
-			"organizer" => "Organizator"
-		);
-		if(!array_key_exists($role, $tables)){
-			throw new BadTableNameException;
-		}
-		return $tables[$role];
-	}
-
 }
 
 

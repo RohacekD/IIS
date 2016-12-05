@@ -1,15 +1,15 @@
 <div class="dashboard-item performance-control col-xs-6 col-sm-6 col-md-3 col-lg-3">
-    <a href="#">
+	<a href="{plink Performance:detail $performance->getId()}">
 	<div class="well">
 		<div class="performance-control-content">
-			<h3>{$performance->nazev}</h3>
+			<h3>{$performance->getProduction()->getName()}</h3>
 			<div class="image-wrapper">
 				<div class="image-container ratio-1-1">
-					<img class="img-rounded" src="{$basePath}/images/store/{$play->fotka}" alt="{$performance->nazev}">
+					<img class="img-rounded" src="{$basePath}/images/store/{$play->getPhoto()}" alt="{$performance->getProduction()->getName()}">
 				</div>
 			</div>
 
-			<p n:inner-foreach="$roles as $role">{$role->nazev} {sep}, {/sep} </p>
+			<p n:inner-foreach="$roles as $role">{$role->getName()} {sep}, {/sep} </p>
             <time>
 				<table>
 					<tr>
@@ -17,19 +17,18 @@
 							{_ main.date}
 						</td>
 						<td class="text-right">
-							{$performance->Datum|date:"%d. %m. %Y"}
+							{$performance->getDate()|date:"%d. %m. %Y"}
 						</td>
 					</tr>
 
 					<tr>
-                        <td>{_ main.date}</td>
-						<td class="text-right">{$performance->Datum|date:"%H:%M:%S"}</td>
+						<td>{_ main.start}</td>
+						<td class="text-right">{$performance->getDate()|date:"%H:%M:%S"}</td>
 					</tr>
 
 				</table>
             </time>
 		</div>
 	</div>
-    </a>
-
+	</a>
 </div>

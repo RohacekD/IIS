@@ -8,102 +8,81 @@
 
 namespace App\ISModule\Model;
 
-use Grido\Exception;
+use Doctrine\ORM\Mapping as ORM;
 use Nette;
 
-class Property extends MyModel
+/**
+ * Class Property
+ * @package App\ISModule\Model
+ * @ORM\Entity
+ */
+class Property
 {
+	use \Kdyby\Doctrine\Entities\Attributes\Identifier;
 	const STATES = array('nová', 'použitá', 'poškozená','velmi poškozená');
-	/** @var  int */
-	private $id;
-	/** @var  string */
+
+	/**
+	 * @ORM\Column(type="string", length=128)
+	 */
 	private $name;
-	/** @var  string one of self::STATES */
+	/**
+	 * @ORM\Column(type="string", length=25, columnDefinition="ENUM('nová', 'použitá', 'poškozená','velmi poškozená')",nullable=false)
+	 */
 	private $state;
 
 	/**
-	 * @return int
+	 * @ORM\ManyToOne(targetEntity="Role", inversedBy="properties")
 	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+	protected $role;
 
 	/**
-	 * @param int $id
+	 * @return mixed
 	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
 	/**
-	 * @param string $name
+	 * @param mixed $name
 	 */
-	public function setName($name)
-	{
+	public function setName( $name ) {
 		$this->name = $name;
 	}
 
 	/**
-	 * @return string
+	 * @return mixed
 	 */
-	public function getState()
-	{
+	public function getState() {
 		return $this->state;
 	}
 
 	/**
-	 * @param $state
-	 * @throws Exception
+	 * @param mixed $state
 	 */
-	public function setState($state)
-	{
-		if(!in_array($state, self::STATES))
-			throw new Exception("Wrong state of the property.");
+	public function setState( $state ) {
 		$this->state = $state;
 	}
 
 	/**
-	 * Property constructor.
-	 * @param $id
+	 * @return int
 	 */
-	public function __construct($id)
-	{
-		parent::__construct("Rekvizita");
-		if($id){
-			$this->getById($id);
-		}
+	public function getId() {
+		return $this->id;
 	}
 
-	public function getById($id)
-	{
-		$row = $this->getModelsRow($id);
-		$this->id = $row["id"];
-		$this->name = $row["nazev"];
-		$this->setState($row["stav"]);
+	/**
+	 * @return mixed
+	 */
+	public function getRole() {
+		return $this->role;
 	}
 
-	public function saveModel()
-	{
-		$data = array();
-		if($this->id){
-			$data["id"] = $this->id;
-		}
-		if(!$this->name){
-			throw new Exception("Proeprty have to have a name");
-		}
-		$data["nazev"] = $this->name;
-		$data["stav"] = $this->state;
-		$this->saveToDB($data);
+	/**
+	 * @param mixed $role
+	 */
+	public function setRole( $role ) {
+		$this->role = $role;
 	}
+
 
 }

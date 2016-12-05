@@ -9,7 +9,7 @@
 namespace App\ISModule\Presenters;
 
 use Ublaboo\DataGrid\DataGrid;
-
+use App\ISModule\Model;
 
 class RolePresenter extends SecuredPresenter {
 	const PRODUCTION_TABLE = "Inscenace";
@@ -37,35 +37,31 @@ class RolePresenter extends SecuredPresenter {
 		$grid = new DataGrid( $this, $name );
 
 		$source = $this->gridDataSource;
-		$grid->setPrimaryKey( "ID" );
+		$grid->setPrimaryKey( "id" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
 
-		$grid->addColumnText( 'nazev', 'tables.role.name' );
-		$grid->addColumnText( 'obtiznost', 'tables.role.difficulty' );
-		$grid->addColumnText( 'casova_narocnost', 'tables.productions.timeDifficulty' );
+		$grid->addColumnText( 'name', 'tables.role.name' );
+		$grid->addColumnText( 'difficulty', 'tables.role.difficulty' );
+		$grid->addColumnText( 'time_difficulty', 'tables.productions.timeDifficulty' );
 		$grid->addAction( "delete", "", "delete!" )
 		     ->setIcon( 'trash' )
 		     ->setTitle( 'Delete' )
 		     ->setClass( 'btn btn-xs btn-danger ajax' )
-		     ->setConfirm( 'Do you really want to delete role \'%s\'?', 'nazev' );
+		     ->setConfirm( 'Do you really want to delete role \'%s\'?', 'name' );
 
-		$grid->setItemsDetail( true, self::ROLES_TABLE . ".ID" );
+		$grid->setItemsDetail( true, "role.ID" );
 
 		return $grid;
 	}
 
 	public function actionMy() {
-		$this->gridDataSource = $this->
-		database->table( self::ROLES_ACTOR_TABLE )
-			//->joinWhere( self::PRODUCTION_TABLE, self::ROLES_TABLE . ".ID_inscenace = " . self::PRODUCTION_TABLE . ".ID" )
-		        ->select( self::ROLES_TABLE . ".ID,"
-		                  . self::ROLES_TABLE . ".nazev, "
-		                  . self::ROLES_TABLE . ".obtiznost, "
-		                  . self::ROLES_TABLE . ".casova_narocnost, "
-		                  . self::ROLES_TABLE . ".popis,"
-			/* . self::PRODUCTION_TABLE . ".nazev" */ )
-		        ->where( self::ROLES_ACTOR_TABLE . ".login_Herec ", $this->getUser()->getId() );
+		$this->gridDataSource = $this->getEm()->createQueryBuilder()
+		                             ->select( 'role' )
+		                             ->from( Model\Performance::class, 'role' )
+		                             ->join( 'role.actors', 'u' )
+		                             ->where( 'u.id = :user' )
+		                             ->setParameter( 'user', $this->getUser()->getId() );
 	}
 
 	public function handleDelete( $id ) {

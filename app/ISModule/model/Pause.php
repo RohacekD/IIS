@@ -8,31 +8,29 @@
 
 namespace App\ISModule\Model;
 
+use Doctrine\ORM\Mapping as ORM;
 use Nette;
 
-
-class Pause extends MyModel
+/**
+ * Class Pause
+ * @package App\ISModule\Model
+ * @ORM\Entity
+ */
+class Pause
 {
-	private $id;
+	use \Kdyby\Doctrine\Entities\Attributes\Identifier;
+
 	/**
-	 * Pause constructor.
-	 * @param int $id
+	 * @ORM\Column(type="time")
 	 */
-	public function __construct($id = null)
-	{
-		parent::__construct("Prestavka");
-		if($id){
-			$this->getById($id);
-		}
-	}
+	private $time;
+	/**
+	 * @ORM\Column(type="time")
+	 */
+	private $duration;
 
-	public function getById($id)
-	{
-		// TODO: Implement getById() method.
-	}
-	public function saveModel()
-	{
-		// TODO: Implement saveModel() method.
-	}
-
+	/**
+	 * @ORM\ManyToOne(targetEntity="Production", inversedBy="pauses")
+	 */
+	private $production;
 }

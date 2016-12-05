@@ -8,191 +8,157 @@
 
 namespace App\ISModule\Model;
 
-use Grido\Exception;
+use Doctrine\ORM\Mapping as ORM;
 use Nette;
 
 /**
  * Class Production
  * @package App\ISModule\Model
- * @brief Means "inscenace"
+ * @ORM\Entity
+ * Means "inscenace"
  */
-class Production extends MyModel
+class Production
 {
+
+	use \Kdyby\Doctrine\Entities\Attributes\Identifier;
+
 	/**
-	 * Defines all scenes in theatre
+	 * @ORM\Column(type="string", length=25)
 	 */
-	const SCENES = array("Malá", "Velká");
-	/** @var int */
-	private $id = null;
-	/** @var  string */
 	private $name;
-	//todo: model
-	/** @var  string */
+
+	/**
+	 * @ORM\Column(type="string", length=25, columnDefinition="ENUM('small', 'big')",nullable=false)
+	 */
 	private $scene;
-	/** @var User */
-	private $director = null;
-	/** @var  int */
-	private $director_id;
-	/** @var  Play */
+	/**
+	 * @ORM\ManyToOne(targetEntity="User")
+	 */
+	private $director;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Play")
+	 */
 	private $play;
-	/** @var  int */
-	private $play_id;
 
-
-	/** @var Performance array */
-	private $performances = null;
-
-	/** @var Role array */
+	/**
+	 * @ORM\OneToMany(targetEntity="Role", mappedBy="production")
+	 */
 	private $roles = null;
 
 	/**
-	 * Production constructor.
-	 * @param int $id
+	 * @ORM\OneToMany(targetEntity="Role", mappedBy="pause")
 	 */
-	public function __construct($id)
-	{
-		parent::__construct("inscenace");
-		if($id){
-			$this->getById($id);
-		}
-	}
+	private $pauses = null;
 
 	/**
-	 * @return int
+	 * @ORM\OneToMany(targetEntity="Performance", mappedBy="performance")
 	 */
-	public function getId()
-	{
-		return $this->id;
-	}
+	private $performances;
 
 	/**
-	 * @param int $id
+	 * @return mixed
 	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
-
-	/**
-	 * @return Performance
-	 */
-	public function getPerformances()
-	{
-		if (!$this->performances){}
-			//TODO: lazy allocation
-		return $this->performances;
-	}
-
-	/**
-	 * @param Performance $performances
-	 */
-	public function setPerformances($performances)
-	{
-		$this->performances = $performances;
-	}
-
-
-	/**
-	 * @return Role
-	 */
-	public function getRoles()
-	{
-		if (!$this->roles){}
-		//TODO: lazy allocation
-		return $this->roles;
-	}
-
-	/**
-	 * @param Role $roles
-	 */
-	public function setRoles($roles)
-	{
-		$this->roles = $roles;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
+	public function getName() {
 		return $this->name;
 	}
 
 	/**
-	 * @param string $name
+	 * @param mixed $name
 	 */
-	public function setName($name)
-	{
+	public function setName( $name ) {
 		$this->name = $name;
 	}
 
 	/**
 	 * @return mixed
 	 */
-	public function getScene()
-	{
+	public function getScene() {
 		return $this->scene;
 	}
 
 	/**
-	 * @param $scene
-	 * @throws Exception if scene name is wrong
+	 * @param mixed $scene
 	 */
-	public function setScene($scene)
-	{
-		if(!in_array($scene, self::SCENES))
-			throw new Exception("Špatné jméno scény");
+	public function setScene( $scene ) {
 		$this->scene = $scene;
 	}
 
 	/**
-	 * @return User
+	 * @return mixed
 	 */
-	public function getDirector()
-	{
-		if (!$this->director)
-			$this->director = new User($this->director_id);
+	public function getDirector() {
 		return $this->director;
 	}
 
 	/**
-	 * @param User $director
+	 * @param mixed $director
 	 */
-	public function setDirector($director)
-	{
+	public function setDirector( $director ) {
 		$this->director = $director;
 	}
 
 	/**
-	 * @param $id
+	 * @return mixed
 	 */
-	public function getById($id)
-	{
-		$row = $this->getModelsRow($id);
-		$this->id = $row["id"];
-		$this->play_id = $row["ID_Divadelni_hra"];
-		$this->director = $row["login_Reziser"];
-		$this->setScene($row["scena"]);
-		$this->name = $row["nazev"];
+	public function getPlay() {
+		return $this->play;
 	}
 
 	/**
-	 * @throws Exception
+	 * @param mixed $play
 	 */
-	public function saveModel()
-	{
-		$data = array();
-		if($this->id){
-			$data["id"] = $this->id;
-		}
-		if(!$this->name){
-			throw new Exception("Production have to have a name");
-		}
-		$data["nazev"] = $this->name;
-		$data["scena"] = $this->scene;
-		$data["login_Reziser"] = $this->director_id;
-		$data["ID_Divadelni_hra"] = $this->play_id;
-		$this->saveToDB($data);
+	public function setPlay( $play ) {
+		$this->play = $play;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getRoles() {
+		return $this->roles;
+	}
+
+	/**
+	 * @param mixed $roles
+	 */
+	public function setRoles( $roles ) {
+		$this->roles = $roles;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getId() {
+		return $this->id;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPauses() {
+		return $this->pauses;
+	}
+
+	/**
+	 * @param mixed $pauses
+	 */
+	public function setPauses( $pauses ) {
+		$this->pauses = $pauses;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPerformances() {
+		return $this->performances;
+	}
+
+	/**
+	 * @param mixed $performances
+	 */
+	public function setPerformances( $performances ) {
+		$this->performances = $performances;
 	}
 
 

@@ -8,142 +8,112 @@
 
 namespace App\ISModule\Model;
 
+use Doctrine\ORM\Mapping as ORM;
 use Nette;
 
 /**
  * Class Play
  * @package App\ISModule\Model
+ * @ORM\Entity
  */
-class Play extends MyModel
+class Play
 {
-	/** @var  int */
-	private $id;
-	/** @var  string */
+	use \Kdyby\Doctrine\Entities\Attributes\Identifier;
+	/**
+	 * @ORM\Column(type="string", length=128)
+	 */
 	private $author;
-	/** @var  string */
+	/**
+	 * @ORM\Column(type="string", length=64)
+	 */
 	private $name;
-	/** @var  string */
+	/**
+	 * @ORM\Column(type="string", length=1024)
+	 */
 	private $description;
-	/** @var  Nette\Utils\DateTime */
+	/**
+	 * @ORM\Column(type="time")
+	 */
 	private $time_needed;
+	/**
+	 * @ORM\Column(type="string", length=128)
+	 */
+	private $photo;
 
 	/**
-	 * Play constructor.
-	 * @param int $id
+	 * @return mixed
 	 */
-	public function __construct($id)
-	{
-		parent::__construct("Divadelni_hra");
-		if($id){
-			$this->getById($id);
-		}
+	public function getAuthor() {
+		return $this->author;
 	}
 
-	public function getById($id)
-	{
-		$row = $this->getModelsRow($id);
-		$this->id = $row["id"];
-		$this->author = $row["autor"];
-		$this->name = $row["jmeno"];
-		$this->description = $row["popis"];
-		$this->time_needed = new Nette\Utils\DateTime($row["casova_narocnost"]);
+	/**
+	 * @param mixed $author
+	 */
+	public function setAuthor( $author ) {
+		$this->author = $author;
 	}
 
-	public function saveModel()
-	{
-		$data = array();
-		if($this->id){
-			$data["id"] = $this->id;
-		}
-		if(!$this->name){
-			throw new Exception("Production have to have a name");
-		}
-		$data["autor"] = $this->author;
-		$data["jmeno"] = $this->name;
-		$data["popis"] = $this->description;
-		$data["casova_narocnost"] = $this->time_needed;
-		$this->saveToDB($data);
+	/**
+	 * @return mixed
+	 */
+	public function getName() {
+		return $this->name;
+	}
+
+	/**
+	 * @param mixed $name
+	 */
+	public function setName( $name ) {
+		$this->name = $name;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
+
+	/**
+	 * @param mixed $description
+	 */
+	public function setDescription( $description ) {
+		$this->description = $description;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getTimeNeeded() {
+		return $this->time_needed;
+	}
+
+	/**
+	 * @param mixed $time_needed
+	 */
+	public function setTimeNeeded( $time_needed ) {
+		$this->time_needed = $time_needed;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getPhoto() {
+		return $this->photo;
+	}
+
+	/**
+	 * @param mixed $photo
+	 */
+	public function setPhoto( $photo ) {
+		$this->photo = $photo;
 	}
 
 	/**
 	 * @return int
 	 */
-	public function getId()
-	{
+	public function getId() {
 		return $this->id;
 	}
-
-	/**
-	 * @param int $id
-	 */
-	public function setId($id)
-	{
-		$this->id = $id;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getAuthor()
-	{
-		return $this->author;
-	}
-
-	/**
-	 * @param string $author
-	 */
-	public function setAuthor($author)
-	{
-		$this->author = $author;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getName()
-	{
-		return $this->name;
-	}
-
-	/**
-	 * @param string $name
-	 */
-	public function setName($name)
-	{
-		$this->name = $name;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getDescription()
-	{
-		return $this->description;
-	}
-
-	/**
-	 * @param string $description
-	 */
-	public function setDescription($description)
-	{
-		$this->description = $description;
-	}
-
-	/**
-	 * @return Nette\Utils\DateTime
-	 */
-	public function getTimeNeeded()
-	{
-		return $this->time_needed;
-	}
-
-	/**
-	 * @param Nette\Utils\DateTime $time_needed
-	 */
-	public function setTimeNeeded($time_needed)
-	{
-		$this->time_needed = $time_needed;
-	}
-
-
 }

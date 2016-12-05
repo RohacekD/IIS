@@ -11,14 +11,19 @@ namespace App\ISModule\Presenters;
 use Nette;
 use Tracy\Debugger;
 use App\ISModule\Controls;
+use Kdyby\Doctrine\EntityManager;
 
 
 class SecuredPresenter extends BasePresenter
 {
 	/** @var Nette\Http\Request @inject */
 	public $http_request;
-	/** @var Nette\Database\Context @inject */
-	public $database;
+
+	/**
+	 * @inject
+	 * @var \Kdyby\Doctrine\EntityManager
+	 */
+	public $entityManager;
 
 	public function handleLogout() {
 		$this->getUser()->logout();
@@ -26,7 +31,7 @@ class SecuredPresenter extends BasePresenter
 	}
 
 	public function createComponentStatusPanel() {
-		return new Controls\StatusPanel( $this->getUser()->getIdentity(), $this->database );
+		return new Controls\StatusPanel( $this->getUser()->getIdentity() );
 	}
 
 	protected function createComponentMenu() {
@@ -43,15 +48,17 @@ class SecuredPresenter extends BasePresenter
 		}
 	}
 
+	/**
+	 * @return EntityManager
+	 */
+	public function getEm(){
+		return $this->entityManager;
+	}
+
 	protected function beforeRender()
 	{
 		parent::beforeRender();
 
-		// $this->template->menuItems = $this->createMenu();
-
-		/*else if(!$this->getUser()->isAllowed("warehouse", "enter") && $this->getUser()->isLoggedIn()){
-			throw new Nette\Application\ForbiddenRequestException;
-		}*/
 		$this->template->user = $this->getUser();
 	}
 

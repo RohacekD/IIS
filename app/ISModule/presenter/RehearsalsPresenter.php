@@ -9,7 +9,6 @@
 namespace App\ISModule\Presenters;
 
 use Ublaboo\DataGrid\DataGrid;
-use App\ISModule\Forms;
 /**
  * Class RehearsalsPresenter
  * @package App\ISModule\Presenters
@@ -22,7 +21,6 @@ class RehearsalsPresenter extends SecuredPresenter {
 	 * @var @persistent Nette\Database\Table\Selection
 	 */
 	private $gridDataSource;
-
 
 	public function createComponentMyPerformancesGrid( $name ) {
 		$grid = $this->makeGrid( $name );
@@ -40,35 +38,34 @@ class RehearsalsPresenter extends SecuredPresenter {
 		$grid = new DataGrid( $this, $name );
 
 		$source = $this->gridDataSource;
-		$grid->setPrimaryKey( "ID" );
+		$grid->setPrimaryKey( "id" );
 		$grid->setTranslator( $this->translator );
 		$grid->setDataSource( $source );
 
-		$grid->addColumnText( 'nazev', 'tables.performances.name' );
-		$grid->addColumnText( 'scena', 'tables.performances.scene' );
-		$grid->addColumnText( 'login_Reziser', 'tables.performances.director' );
-		$grid->addColumnDateTime( 'Datum', 'tables.performances.date' );
+		$grid->addColumnText( 'production.name', 'tables.performances.name' );
+		$grid->addColumnText( 'production.scene', 'tables.performances.scene' );
+		$grid->addColumnText( 'production.director.username', 'tables.performances.director' );
+		$grid->addColumnDateTime( 'date', 'tables.performances.date' );
 		$grid->addAction( "delete", "", "delete!" )
 		     ->setIcon( 'trash' )
 		     ->setTitle( 'Delete' )
 		     ->setClass( 'btn btn-xs btn-danger ajax' )
-		     ->setConfirm( 'Do you really want to delete performance \'%s\'?', 'nazev' );
+		     ->setConfirm( 'Do you really want to delete performance \'%s\'?', 'production.name' );
 
-		$grid->setItemsDetail( true, "Predstaveni.ID" );
+		$grid->setItemsDetail( true, "r.id" );
 
 		return $grid;
 	}
 
 	public function actionMy() {
-		//todo jen ta kde hraji
-		$this->gridDataSource = $this->database
-			->query( "
-				SELECT `Zkouska`.*
-				FROM `Zkouska` 
-				LEFT JOIN `Inscenace` ON `Zkouska`.`Inscenace_ID` = `Inscenace`.`ID`
-				LEFT JOIN `Inscenace_Herec` ON `Inscenace`.`ID` = `Inscenace_Herec`.`ID_Inscenace`
-				WHERE (`Inscenace_Herec`.`login_Herec` = '" . $this->getUser()->getId() . "') 
-				ORDER BY `Zkouska`.`Datum`" );
+		$this->gridDataSource = $this->getEm()->createQueryBuilder()
+		                             ->select( 'r, pro' )
+		                             ->from( Model\Rehearsal::class, 'r' )
+		                             ->leftJoin( 'r.production', 'pro' )
+		                             ->join( 'pro.roles', 'roles' )
+		                             ->join( 'roles.actors', 'u' )
+		                             ->where( 'u.id = :user' )
+		                             ->setParameter( 'user', $this->getUser()->getId() );
 	}
 
 	public function handleDelete( $id ) {
