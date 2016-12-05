@@ -12,10 +12,6 @@ use Ublaboo\DataGrid\DataGrid;
 use App\ISModule\Model;
 
 class RolePresenter extends SecuredPresenter {
-	const PRODUCTION_TABLE = "Inscenace";
-	const PLAYS_TABLE = "Divadelni_hra";
-	const ROLES_TABLE = "Role";
-	const ROLES_ACTOR_TABLE = "Role_Herec";
 	/**
 	 * @var @persistent Nette\Database\Table\Selection
 	 */

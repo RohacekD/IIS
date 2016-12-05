@@ -43,6 +43,25 @@ class User implements IIdentity
 	 */
 	protected $password;
 
+	/**
+	 * @ORM\ OneToOne(targetEntity="Contact", mappedBy="user")
+	 */
+	protected $contact;
+
+	/**
+	 * @return mixed
+	 */
+	public function getContact() {
+		return $this->contact;
+	}
+
+	/**
+	 * @param mixed $contact
+	 */
+	public function setContact( $contact ) {
+		$this->contact = $contact;
+	}
+
 	function getRoles() {
 		return [$this->role];
 	}

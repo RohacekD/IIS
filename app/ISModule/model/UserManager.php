@@ -74,7 +74,7 @@ class UserManager implements Nette\Security\IAuthenticator {
 	 * @param $password
 	 * @param $role
 	 *
-	 * @return Contact
+	 * @return User
 	 * @throws DuplicateNameException
 	 */
 	public function add( $username, $password, $role ) {
@@ -96,7 +96,7 @@ class UserManager implements Nette\Security\IAuthenticator {
 		$this->entityManager->persist($contact);
 		$this->entityManager->flush(); // save it to the database
 
-		return $contact;
+		return $this->entityManager->getRepository( Model\User::class )->findOneById( $user->getId() );
 	}
 }
 
