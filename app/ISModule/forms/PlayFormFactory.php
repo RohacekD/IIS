@@ -56,12 +56,20 @@ class PlayFormFactory
              ->setAttribute('class', 'form-control')
              ->setAttribute( 'placeholder', 'Autor' )
              ->setDefaultValue( $play->getAuthor() );
-        $form->addText('time', "Časová náročnost")
-             ->setAttribute("type", "time")
-             ->setRequired('forms.rehearsal.hintProduction')
-             ->setAttribute('class', 'form-control')
-             ->setAttribute( 'placeholder', 'časová náročnost' )
-             ->setDefaultValue( $play->getTimeNeeded()->format( 'H:i' ) );
+	    if ( $play->getId() ) {
+		    $form->addText( 'time', "Časová náročnost" )
+		         ->setAttribute( "type", "time" )
+		         ->setRequired( 'forms.rehearsal.hintProduction' )
+		         ->setAttribute( 'class', 'form-control' )
+		         ->setAttribute( 'placeholder', 'časová náročnost' )
+		         ->setDefaultValue( $play->getTimeNeeded()->format( 'H:i' ) );
+	    } else {
+		    $form->addText( 'time', "Časová náročnost" )
+		         ->setAttribute( "type", "time" )
+		         ->setRequired( 'forms.rehearsal.hintProduction' )
+		         ->setAttribute( 'class', 'form-control' )
+		         ->setAttribute( 'placeholder', 'časová náročnost' );
+	    }
         $form->addTextArea('desription', null, null, 5)
              ->setRequired('Uveďte prosím popis hry')
              ->setAttribute('class', 'form-control')
