@@ -11,6 +11,7 @@ namespace App\ISModule\Presenters;
 use App\ISModule\Model;
 use Ublaboo\DataGrid\DataGrid;
 use App\ISModule\Forms;
+use App;
 
 /**
  * Class ProductionsPresenter
@@ -64,6 +65,17 @@ class ProductionsPresenter extends SecuredPresenter {
 		$grid->setItemsDetail( true, "pro.id" );
 
 		return $grid;
+	}
+
+	public function createComponentListGrid( $name ) {
+		$grid = $this->makeGrid( $name );
+		$grid->setTemplateFile( __DIR__ . '/templates/Productions/my-grid-detail.latte' );
+
+		return $grid;
+	}
+
+	public function createComponentAddRoles() {
+		return new App\ISModule\Controls\AddRoleControl( $this->entityManager );
 	}
 
 	public function actionMy() {

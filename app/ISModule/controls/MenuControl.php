@@ -18,8 +18,6 @@ use Tracy\Debugger;
  */
 class MenuControl extends Control
 {
-    /** @var Nette\Database\Context */
-    protected $database;
     /** @var  Nette\Security\Identity */
     private $user;
 
@@ -32,14 +30,6 @@ class MenuControl extends Control
     {
         parent::__construct();
         $this->user = $user;
-    }
-
-	/**
-	 * @param Nette\Database\Context $database
-	 */
-	public function injectDatabase( Nette\Database\Context $database )
-    {
-        $this->database = $database;
     }
 
 	/**

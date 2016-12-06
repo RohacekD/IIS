@@ -62,21 +62,21 @@
 .performance-group .image-wrapper {
   position: relative;
   margin: 0 30%;
-    width: 40%;
+	width: 40%;
 }
 .performance-group .well {
   min-width: 160px;
   padding: 10px;
-    margin: 3px;
+	margin: 3px;
 }
 
 .performance-group .well table {
-    width: 100%;
+	width: 100%;
 }
 
 .performance-group .well tr {
     padding: 0;
-    color: gray;
+	color: gray;
 }
 
 .sidebar-nav li {
@@ -86,81 +86,81 @@
   border: 1px solid #222222;
   background-color: #555555;
   line-height: 50px;
-    vertical-align: middle;
+	vertical-align: middle;
 }
 
 .sidebar-nav li a {
     color: #CCC;
-    font-size: 1.1em;
+	font-size: 1.1em;
 }
 
 .sidebar-nav li.performance, .sidebar-nav li.role, .sidebar-nav li.rehearsals, .sidebar-nav li.production, .sidebar-nav li.user, .sidebar-nav li.play {
     background-repeat: no-repeat;
     background-position: 98%;
-    background-size: 40px;
+	background-size: 40px;
 }
 
 .sidebar-nav li.performance {
-    background-image: url("../images/icons/performance.png");
+	background-image: url("../images/icons/performance.png");
 }
 
 .sidebar-nav li.role {
-    background-image: url("../images/icons/role.png");
+	background-image: url("../images/icons/role.png");
 }
 
 .sidebar-nav li.rehearsals {
-    background-image: url("../images/icons/rehearsals.png");
+	background-image: url("../images/icons/rehearsals.png");
 }
 
 .sidebar-nav li.production {
-    background-image: url("../images/icons/production.png");
+	background-image: url("../images/icons/production.png");
 }
 
 .sidebar-nav li.play {
-    background-image: url("../images/icons/play.png");
+	background-image: url("../images/icons/play.png");
 }
 
 .sidebar-nav li.user {
-    background-image: url("../images/icons/users.png");
+	background-image: url("../images/icons/users.png");
 }
 
 table.table tbody tr.row-item-detail.loaded td {
   padding: 0;
-    border: 0;
+	border: 0;
 }
 
 .dashboard-item .well {
-    min-width: 160px;
-    padding: 10px;
-    margin: 3px;
+	min-width: 160px;
+	padding: 10px;
+	margin: 3px;
 }
 
 .dashboard-item .well h3 {
     font-size: 15px;
-    border-bottom: solid 1px gray;
+	border-bottom: solid 1px gray;
 }
 
 .dashboard-item .well .image-wrapper {
     position: relative;
     margin: 0 30%;
-    width: 40%;
+	width: 40%;
 }
 
 .dashboard-item .well table {
-    width: 100%;
+	width: 100%;
 }
 
 .dashboard-item .well tr {
     padding: 0;
-    color: gray;
+	color: gray;
 }
 .dashboard-item a, .dashboard-item a:hover, .dashboard-item a:active a:visited {
-    color: gray;
-    text-decoration: none;
+	color: gray;
+	text-decoration: none;
 }
 
 .dashboard-item:hover .well {
-    background-color: #a9c7de;
+	background-color: #a9c7de;
 }
 
 /*
@@ -284,7 +284,7 @@ body#sign-in-page {
   background-image: url("../images/sydney-363244_1280.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-    color: white;
+	color: white;
 }
 
 body#sign-in-page .col-login {
@@ -293,24 +293,24 @@ body#sign-in-page .col-login {
     padding: 50px;
     background-color: rgba(10, 10, 10, 0.8);
     border: 1px white solid;
-    border-radius: 4px;
+	border-radius: 4px;
 }
 
 body#sign-in-page .login-wrapper {
-    padding-top: 15%;
+	padding-top: 15%;
 }
 
 body#sign-in-page h2 {
-    margin: 0;
+	margin: 0;
 }
 
 body#sign-in-page .logo {
-    width: 100%;
+	width: 100%;
 }
 
 body#sign-in-page .form-container {
     background-color: rgba(255, 255, 255, 0.3);
-    overflow: auto;
+	overflow: auto;
 }
 
 /* Change the white to any color ;) */
@@ -338,26 +338,26 @@ html, body {
     height: 40px;
     width: 250px;
     position: absolute;
-    border-right: 1px solid gray;
+	border-right: 1px solid gray;
 }
 
 #top-navbar img {
   height: 40px;
-    position: relative;
+	position: relative;
 }
 
 #menu-toggle {
   position: absolute;
   bottom: 50px;
   right: 0;
-    width: 50px;
+	width: 50px;
 }
 
 .headline {
   color: white;
   position: absolute;
   left: 260px;
-    font-style: italic;
+	font-style: italic;
 }
 
 .headline h1 {
@@ -365,15 +365,19 @@ html, body {
     margin-bottom: 0px;
     font-size: 10px;
     line-height: 50px;
-    vertical-align: middle;
+	vertical-align: middle;
+}
+
+#wrapper {
+	height: calc(100% - 50px);
 }
 
 .headline-wrapper {
-    border-bottom: solid 1px gray;
-    display: block;
-    position: relative;
-    height: 45px;
-    margin-bottom: 5px;
+	border-bottom: solid 1px gray;
+	display: block;
+	position: relative;
+	height: 45px;
+	margin-bottom: 5px;
 }
 
 .headline-wrapper h1 {
@@ -381,18 +385,18 @@ html, body {
     display: inline-block;
     bottom: 5px;
     margin: 0px;
-    position: absolute;
+	position: absolute;
 }
 
 .headline-wrapper .btn {
     position: absolute;
     right: 10px;
     bottom: 5px;
-    padding: 2px 12px;
+	padding: 2px 12px;
 }
 
 .datagrid-per-page-submit {
-    display: none;
+	display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
