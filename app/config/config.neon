@@ -41,7 +41,7 @@ doctrine:
 	password: TMyFXqt9yb
 	dbname: sql7142336
 	metadata:
-		App\ISModule\Model: %appDir%\ISModule\model
+		App\ISModule\Model: %appDir%/ISModule/model
 
 translation:
     default: cs

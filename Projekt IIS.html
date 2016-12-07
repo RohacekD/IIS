@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0067)https://www.fit.vutbr.cz/study/courses/IIS/private/projekt/doc.html -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2">
+
+    <title>Projekt IIS</title>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 0.3em 0.5em;
+            text-align: left;
+        }
+
+        dt {
+            font-weight: bold;
+            margin-top: 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
+     podle použitého editoru -->
+
+<h1>Plánování divadelních představení</h1> <!-- Nahradte názvem svého zadání -->
+
+<dl>
+    <dt>Autoři</dt>
+    <dd>Dominik Roháček <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xrohac04@stud.fit.vutbr.cz">xrohac04@stud.fit.vutbr.cz</a> -
+        převážně backend
+    </dd>
+    <dd>Dalibor Jelínek <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
+        <a href="mailto:xjelin42@stud.fit.vutbr.cz">xjelin42@stud.fit.vutbr.cz</a> -
+        převážně frontend
+    </dd>
+    <dt>URL aplikace</dt>
+    <dd><a href="http://damoclesus.8u.cz/www/admin">www.damoclesus.8u.cz</a></dd>
+</dl>
+
+<h2>Uživatelé systému pro testování</h2>
+<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+<table>
+    <tbody>
+    <tr>
+        <th>Login</th>
+        <th>Heslo</th>
+        <th>Role</th>
+    </tr>
+    <tr>
+        <td>organizer</td>
+        <td>organizer</td>
+        <td>Organizátor (plná práva)</td>
+    </tr>
+    <tr>
+        <td>actor</td>
+        <td>actor</td>
+        <td>Herec</td>
+    </tr>
+    <tr>
+        <td>director</td>
+        <td>director</td>
+        <td>Režisér</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2>Implementace</h2>
+<p>Protože nette používá architekruru MVP, není možno přímo říci, jaký skript řeší který z případů užití. Ale je jasně
+    viditělné, který presenter pracuje se kterou databázovou entitou. Peresenter má poté jednotlivé akce jako výpis
+    seznamu entit, vytvoření nebo editaci entity a její smazání implementované jako signál volaný z listů.</p>
+<h2>Instalace</h2>
+<ul>
+    <li>Požadavky: PHP 5.6 + PDO extension</li>
+    <li>V adresáři app/config/config.neon vyplňte přihlašovací údaje k databázi (defaultně je nastavena online databáze
+        s ukázkovým obsahem)
+    </li>
+    <li>Pro vytvoření databáze k informačnímu systému spusťe na MySql serveru skript damoclesus.sql umístěný v kořenovém
+        adresáři
+    </li>
+    <li>Dále je nutné v kořenovém adrasáři vytvořit adresáře 'temp' a 'log' s chomd 777</li>
+    <li>Nyní je možné se přihlásit jako uživatel 'organizer' s heslem 'organizer' na stránce www/admin</li>
+</ul>
+
+<h2>Známé problémy</h2>
+<p>Celý projekt byl koncipován jako velmi robustní řešení přesahující rámec předmětu IIS. Bohužel se nám tyto ambiciózní
+    plány nepodařilo v časovém limitu realizovat.<br>
+    V aktuální fázi je vyřešeno zabezpečení, správa uživatelských účtů, přihlašování a odhlašování, přidávání,
+    zobrazování a editace divadelních her a jejích inscenací. Za zmínku stojí dynamické formuláře pro přidávání či
+    úpravu
+    divadelních her a inscenaci. Z pohledu herce je implementován nedodělaný dashboard s nejbližšími zkouškami a
+    představeními. Bohužel už nejsou vyřešeny představení a přestávky, přesto že databáze je k tomu přizpůsobena.
+    Projekt je připraven pro různé jazykové mutace i pro nasazení responzovního designu.
+    Z pohledu herce jsou sice vidět ovládací prvky pro upravy her či inscenací, je to však pouze záležitost zobrazení.
+    Umožněn zápis do databáze jim není. Integritní omezení databáze zajišťuje ORM Doctrine.</p>
+
+
+</body>
+</html>
